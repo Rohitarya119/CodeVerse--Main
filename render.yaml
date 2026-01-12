@@ -5,8 +5,8 @@ services:
     env: docker
     rootDir: Backend/codeverse-backend
     plan: free
-    dockerContext: Backend/codeverse-backend
-    dockerfilePath: Backend/codeverse-backend/Dockerfile
+    dockerContext: .
+    dockerfilePath: Dockerfile
     envVars:
       - key: PORT
         value: 8081
@@ -37,8 +37,8 @@ services:
     env: docker
     rootDir: server
     plan: free
-    dockerContext: server
-    dockerfilePath: server/Dockerfile
+    dockerContext: .
+    dockerfilePath: Dockerfile
     envVars:
       - key: PORT
         value: 3000
