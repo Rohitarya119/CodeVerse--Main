@@ -1,0 +1,24 @@
+# General
+.DS_Store
+.env
+*.env
+.vscode/
+
+# Node
+node_modules/
+dist/
+build/
+npm-debug.log*
+
+# Java/Maven
+target/
+*.class
+*.jar
+*.war
+.idea/
+*.iml
+.mvn/wrapper/maven-wrapper.properties
+
+# Logs
+logs/
+*.log
