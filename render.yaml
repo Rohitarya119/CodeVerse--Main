@@ -2,6 +2,7 @@ services:
   # Backend Web Service
   - type: web
     name: codeverse-backend
+    region: singapore
     env: docker
     rootDir: Backend/codeverse-backend
     plan: free
@@ -34,6 +35,7 @@ services:
   # Executor Service (Web Service)
   - type: web
     name: codeverse-executor
+    region: singapore
     env: docker
     rootDir: server
     plan: free
@@ -46,6 +48,7 @@ services:
   # Frontend Static Site
   - type: web
     name: codeverse-frontend
+    region: singapore
     env: static
     rootDir: .
     buildCommand: cd Frontend && npm install && npm run build
