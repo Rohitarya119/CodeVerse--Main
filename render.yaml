@@ -48,7 +48,6 @@ services:
   # Frontend Static Site
   - type: web
     name: codeverse-frontend
-    region: singapore
     env: static
     rootDir: .
     buildCommand: cd Frontend && npm install && npm run build
