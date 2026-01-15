@@ -4,16 +4,27 @@ To enable "Login with Google" and "Login with GitHub" in production, you need to
 
 ---
 
+## 🌐 Specific Redirect URIs for Your App
+Based on your deployed Render URL (`https://codeverse-backend-xjk4.onrender.com`), these are the **EXACT** values you must paste.
+
+### 1. Google Console
+**Authorized redirect URIs**:
+```
+https://codeverse-backend-xjk4.onrender.com/login/oauth2/code/google
+```
+
+### 2. GitHub Settings
+**Authorization callback URL**:
+```
+https://codeverse-backend-xjk4.onrender.com/login/oauth2/code/github
+```
+*(Make sure there is a slash `/` after `.com`)*
+
+---
+
 ## 🌐 Generic Setup Info
 For both providers, you will need your **Deployed Backend URL**.
--   **Example Backend URL**: `https://codeverse-backend.up.railway.app` (This is hypothetical; us yours).
-
-### Important Redirect URIs
-You must whitelist these exact URLs in the provider settings:
-1.  **Google**: `https://[YOUR_BACKEND_DOMAIN]/login/oauth2/code/google`
-2.  **GitHub**: `https://[YOUR_BACKEND_DOMAIN]/login/oauth2/code/github`
-
-> **Note**: For local development, you also add: `http://localhost:8081/login/oauth2/code/google`
+-   **Your Backend URL**: `https://codeverse-backend-xjk4.onrender.com`
 
 ---
 
@@ -31,13 +42,13 @@ You must whitelist these exact URLs in the provider settings:
     -   **Application Type**: Web application.
     -   **Name**: "CodeVerse Web".
     -   **Authorized JavaScript origins**:
-        -   `https://[YOUR_FRONTEND_DOMAIN]` (e.g., `https://codeverse-frontend.up.railway.app`)
+        -   `https://codeverse-frontend-static.onrender.com` (Check your actual Frontend URL in Render Dashboard)
     -   **Authorized redirect URIs** (CRITICAL):
-        -   `https://[YOUR_BACKEND_DOMAIN]/login/oauth2/code/google`
+        -   `https://codeverse-backend-xjk4.onrender.com/login/oauth2/code/google`
     -   Click **Create**.
 5.  **Copy Secrets**:
     -   Copy **Client ID** and **Client Secret**.
-    -   Add them to Railway Variables as `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+    -   Add them to Render Environment Variables as `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
 
 ---
 
@@ -47,19 +58,19 @@ You must whitelist these exact URLs in the provider settings:
 2.  Click **New OAuth App**.
 3.  **Fill Config**:
     -   **Application Name**: CodeVerse
-    -   **Homepage URL**: `https://[YOUR_FRONTEND_DOMAIN]`
+    -   **Homepage URL**: `https://codeverse-frontend-static.onrender.com` (Check your actual Frontend URL)
     -   **Authorization callback URL** (CRITICAL):
-        -   `https://[YOUR_BACKEND_DOMAIN]/login/oauth2/code/github`
+        -   `https://codeverse-backend-xjk4.onrender.com/login/oauth2/code/github`
 4.  Click **Register application**.
 5.  **Copy Secrets**:
     -   Copy **Client ID**.
     -   Click **Generate a new client secret** and copy it.
-    -   Add them to Railway Variables as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+    -   Add them to Render Environment Variables as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
 
 ---
 
-## 3️⃣ Update Railway Variables
-Once you have the keys, go to your **Backend Service** in Railway -> **Variables** and add:
+## 3️⃣ Update Render Variables
+Once you have the keys, go to your **Backend Service** in Render -> **Environment** and add/update:
 
 | Key | Value |
 | :--- | :--- |

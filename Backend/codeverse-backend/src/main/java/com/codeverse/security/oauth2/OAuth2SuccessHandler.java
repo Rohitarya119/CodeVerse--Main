@@ -79,7 +79,11 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
                             safeUsername = "user_" + System.currentTimeMillis();
                         }
                         newUser.setUsername(safeUsername);
-                        newUser.setFullName(name != null ? name : "");
+                        
+                        // Fix for @NotBlank execution on fullName
+                        String validName = (name != null && !name.isBlank()) ? name : safeUsername;
+                        newUser.setFullName(validName);
+                        
                         newUser.setPassword(passwordEncoder.encode("OAUTH2_USER"));
                         newUser.setSkillLevel("Beginner"); // Default skill level
                         User savedUser = userRepository.save(newUser);
@@ -98,7 +102,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             }
         } catch (Exception e) {
             logger.error("OAuth2 sign-in failed", e);
-            String msg = URLEncoder.encode("OAuth2 sign-in failed", StandardCharsets.UTF_8);
+            String msg = URLEncoder.encode("Sign-in failed: " + e.getMessage(), StandardCharsets.UTF_8);
             response.sendRedirect(frontendUrl + "/login?error=" + msg);
         }
     }
