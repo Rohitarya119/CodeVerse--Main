@@ -22,7 +22,7 @@ const universities = [
 export function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { signup, login } = useAuth();
+  const { signup, login, error } = useAuth(); // Get error from context
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -45,28 +45,37 @@ export function SignupForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Construct the payload expected by the backend RegisterRequest
+    // Generate a more unique username to avoid "Username taken" errors
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000); // 4 digit random number
+    const baseUsername = formData.email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ""); // Clean chars
+    const username = `${baseUsername}${randomSuffix}`;
+
     const payload = {
-      username: formData.email.split('@')[0], // Use part of email as username or ask user. Let's infer for now.
+      username: username,
       email: formData.email,
       password: formData.password,
       fullName: `${formData.firstName} ${formData.lastName}`.trim(),
-      skillLevel: "Beginner" // Default
+      skillLevel: "Beginner"
     };
 
     const success = await signup(payload);
 
     if (success) {
-      // Auto-login after successful signup
       await login(payload.email, payload.password);
       setIsLoading(false);
       navigate("/dashboard");
     } else {
       setIsLoading(false);
+      // Error is updated in context and will be displayed below
     }
   };
 
   return <form onSubmit={onSignup} className="space-y-4">
+    {error && (
+      <div className="p-3 text-sm text-red-500 bg-red-50 border border-red-200 rounded-md">
+        {error}
+      </div>
+    )}
     <div className="grid grid-cols-2 gap-4">
       <div className="space-y-2">
         <Label htmlFor="firstName">First name</Label>
