@@ -88,6 +88,7 @@ public class SecurityConfig {
                         .requestMatchers("/login/oauth2/code/**").permitAll()
                         .requestMatchers("/oauth2/**").permitAll()
                         .requestMatchers("/error").permitAll()
+                        .requestMatchers("/", "/health", "/actuator/**").permitAll() // Allow health checks
                         .anyRequest().authenticated())
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/oauth2/authorization")
