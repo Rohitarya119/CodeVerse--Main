@@ -69,8 +69,20 @@ public class JwtTokenProvider {
     }
 
     private SecretKey key() {
-        // JWT secret is stored as hex string, so decode it as hex
-        byte[] keyBytes = HexFormat.of().parseHex(jwtSecret);
-        return Keys.hmacShaKeyFor(keyBytes);
+        try {
+            // Try to assume it is Hex first (for backward compatibility)
+            byte[] keyBytes = HexFormat.of().parseHex(jwtSecret);
+            return Keys.hmacShaKeyFor(keyBytes);
+        } catch (IllegalArgumentException e) {
+            // If not valid hex, assume it is a raw UTF-8 passphrase.
+            // Use SHA-256 to ensure we have a secure 256-bit key (32 bytes) regardless of input length.
+            try {
+                java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+                byte[] keyBytes = digest.digest(jwtSecret.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                return Keys.hmacShaKeyFor(keyBytes);
+            } catch (java.security.NoSuchAlgorithmException ex) {
+                throw new RuntimeException("SHA-256 algorithm not found", ex);
+            }
+        }
     }
 }
