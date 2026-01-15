@@ -100,6 +100,12 @@ public class AuthController {
     }
 
     @GetMapping("/me")
+    public ResponseEntity<?> getCurrentUser(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(new UserDto(user));
+    }
+
+    @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
