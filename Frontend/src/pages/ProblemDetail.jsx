@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
 import { useParams, Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
+import { API_BASE_URL } from "@/config";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,7 +59,7 @@ export default function ProblemDetail() {
     useEffect(() => {
         const fetchProblem = async () => {
             try {
-                const response = await fetch(`/api/problems/${id}`);
+                const response = await fetch(`${API_BASE_URL}/api/problems/${id}`);
                 if (!response.ok) throw new Error("Failed to fetch problem");
                 const data = await response.json();
 
@@ -101,7 +102,7 @@ export default function ProblemDetail() {
                 language: selectedLanguage
             };
 
-            const response = await fetch(`/api/problems/${id}/execute`, {
+            const response = await fetch(`${API_BASE_URL}/api/problems/${id}/execute`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
@@ -151,7 +152,7 @@ export default function ProblemDetail() {
                 headers["Authorization"] = `Bearer ${token}`;
             }
 
-            const response = await fetch(`/api/problems/${id}/submit`, {
+            const response = await fetch(`${API_BASE_URL}/api/problems/${id}/submit`, {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify({

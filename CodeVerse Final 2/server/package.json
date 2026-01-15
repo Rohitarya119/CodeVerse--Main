@@ -1,0 +1,20 @@
+{
+    "name": "codeverse-executor-proxy",
+    "dependencies": {
+        "axios": "^1.7.7",
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.3",
+        "express": "^4.19.2",
+        "pg": "^8.16.3"
+    },
+    "scripts": {
+        "start": "node server.js"
+    },
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs"
+}

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { API_BASE_URL } from "@/config";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -41,10 +42,10 @@ export default function ProfilePage() {
         const token = localStorage.getItem("token"); // Or useAuth token if available
         const headers = {};
         if (token) {
-           headers["Authorization"] = `Bearer ${token}`;
+          headers["Authorization"] = `Bearer ${token}`;
         }
-        
-        const response = await fetch("/api/users/me/stats", { headers });
+
+        const response = await fetch(`${API_BASE_URL}/api/users/me/stats`, { headers });
         if (response.ok) {
           const data = await response.json();
           setStats(data);
@@ -61,7 +62,7 @@ export default function ProfilePage() {
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-background">
       <div className="container mx-auto p-6 lg:p-8">
-        
+
         {/* User Profile Header */}
         <ScrollReveal>
           <Card className="border-border bg-gradient-to-br from-primary/10 via-card to-accent/10 mb-8">
@@ -144,16 +145,16 @@ export default function ProfilePage() {
         </ScrollReveal>
 
         <div className="grid gap-8 lg:grid-cols-2 mb-8">
-           <ScrollReveal delay={200} className="h-full">
+          <ScrollReveal delay={200} className="h-full">
             <SkillRadar stats={stats} />
           </ScrollReveal>
           <ScrollReveal delay={300} className="h-full">
-             <ProgressSection stats={stats} />
+            <ProgressSection stats={stats} />
           </ScrollReveal>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2 mb-8">
-           <ScrollReveal delay={400} className="h-full">
+          <ScrollReveal delay={400} className="h-full">
             <StreakCalendar />
           </ScrollReveal>
           <ScrollReveal delay={500} className="h-full">
@@ -162,7 +163,7 @@ export default function ProfilePage() {
         </div>
 
         <ScrollReveal delay={600}>
-           <div className="mb-8">
+          <div className="mb-8">
             <h2 className="text-xl font-bold mb-4">Recent Activity</h2>
             <RecentActivity />
           </div>

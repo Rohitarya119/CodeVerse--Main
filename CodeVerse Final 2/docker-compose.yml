@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: codeverse-db
+    environment:
+      POSTGRES_DB: codeverse
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./Backend/codeverse-backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - codeverse-network
+
+  # Backend (Spring Boot)
+  backend:
+    build:
+      context: ./Backend/codeverse-backend
+      dockerfile: Dockerfile
+    container_name: codeverse-backend
+    env_file:
+      - ./server/.env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/codeverse
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+      CODEVERSE_EXECUTOR_URL: http://executor:3000/execute
+      BATTLE_DURATION_SECONDS: "180"
+      BATTLE_MAX_PLAYERS: "10"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - codeverse-network
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+
+  # Executor Proxy (Node.js)
+  executor:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: codeverse-executor
+    environment:
+      USE_JUDGE0: "false"
+      JUDGE0_API_KEY: fc2f2c5df3msh2acfedd237a87bep13681bjsn4f9295853417
+      JUDGE0_API_HOST: judge0-ce.p.rapidapi.com
+    ports:
+      - "3000:3000"
+    volumes:
+      - executor_temp:/app/temp
+    networks:
+      - codeverse-network
+    restart: unless-stopped
+
+  # Frontend (React + Vite)
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: codeverse-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+      - executor
+    networks:
+      - codeverse-network
+    restart: unless-stopped
+
+networks:
+  codeverse-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  executor_temp:
