@@ -31,12 +31,12 @@ services:
         fromService:
           type: web
           name: codeverse-frontend
-          property: url
+          property: host
       - key: CORS_ALLOWED_ORIGINS
         fromService:
           type: web
           name: codeverse-frontend
-          property: url
+          property: host
 
   # Executor Service (Web Service)
   - type: web
@@ -63,4 +63,4 @@ services:
         fromService:
           type: web
           name: codeverse-backend
-          property: url
+          property: host

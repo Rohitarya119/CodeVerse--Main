@@ -19,7 +19,12 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // This is the origin of your React app
-        configuration.setAllowedOrigins(List.of(allowedOrigins.split(",")));
+        List<String> origins = java.util.stream.Stream.of(allowedOrigins.split(","))
+            .map(String::trim)
+            .map(origin -> origin.startsWith("http") ? origin : "https://" + origin)
+            .toList();
+
+        configuration.setAllowedOrigins(origins);
 
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));

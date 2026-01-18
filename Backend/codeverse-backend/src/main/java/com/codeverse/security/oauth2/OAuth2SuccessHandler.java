@@ -60,7 +60,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         if (extractedEmail == null || extractedEmail.isEmpty()) {
             String msg = URLEncoder.encode("Email not provided by OAuth2 provider", StandardCharsets.UTF_8);
-            response.sendRedirect(frontendUrl + "/login?error=" + msg);
+            response.sendRedirect(getFrontendUrl() + "/login?error=" + msg);
             return;
         }
 
@@ -95,16 +95,23 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
             if (token != null && !token.isEmpty()) {
                 // Redirect to frontend OAuth callback with token
-                response.sendRedirect(frontendUrl + "/oauth-callback?token=" + token);
+                response.sendRedirect(getFrontendUrl() + "/oauth-callback?token=" + token);
             } else {
                 String msg = URLEncoder.encode("Token generation failed", StandardCharsets.UTF_8);
-                response.sendRedirect(frontendUrl + "/login?error=" + msg);
+                response.sendRedirect(getFrontendUrl() + "/login?error=" + msg);
             }
         } catch (Exception e) {
             logger.error("OAuth2 sign-in failed", e);
             String msg = URLEncoder.encode("Sign-in failed: " + e.getMessage(), StandardCharsets.UTF_8);
-            response.sendRedirect(frontendUrl + "/login?error=" + msg);
+            response.sendRedirect(getFrontendUrl() + "/login?error=" + msg);
         }
+    }
+
+    private String getFrontendUrl() {
+        if (frontendUrl != null && !frontendUrl.startsWith("http")) {
+            return "https://" + frontendUrl;
+        }
+        return frontendUrl;
     }
 
     private String generateValidUniqueUsername(String name, String email) {
