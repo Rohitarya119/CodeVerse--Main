@@ -16,7 +16,8 @@ https://codeverse-backend-xjk4.onrender.com/login/oauth2/code/google
 ### 2. GitHub Settings
 **Authorization callback URL**:
 ```
-https://codeverse-backend-xjk4.onrender.com/login/oauth2/code/github
+
+
 ```
 *(Make sure there is a slash `/` after `.com`)*
 

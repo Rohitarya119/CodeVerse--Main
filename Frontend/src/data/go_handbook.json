@@ -1,0 +1,428 @@
+{
+    "language": "Go",
+    "version": "1.0.0",
+    "total_chapters": 18,
+    "estimated_hours": 10,
+    "chapters": [
+        {
+            "chapter_id": 1,
+            "chapter_title": "Introduction to Go & Use Cases",
+            "level": "beginner",
+            "theory": "Go (Golang) is an open-source, statically typed language developed by Google. It is known for its simplicity, efficiency, and built-in support for concurrency. Go is widely used for cloud-native development, microservices, and system programming.",
+            "examples": [
+                {
+                    "title": "Why Go?",
+                    "code": "// Simple, fast compilation, garbage collected\n// Strong concurrency support (goroutines)\n// Used by Docker, Kubernetes, Terraform",
+                    "explanation": "Go emphasizes readability and productivity. It lacks some features like inheritance but gains clarity."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Who developed Go and what is its primary use case?",
+                    "difficulty": "easy",
+                    "solution": "Developed by Google; primarily used for cloud infrastructure, microservices, and system tools."
+                }
+            ],
+            "completion_criteria": "Understand Go's history and key features."
+        },
+        {
+            "chapter_id": 2,
+            "chapter_title": "Go Setup & First Program",
+            "level": "beginner",
+            "theory": "A Go program consists of packages. The main function acts as the entry point. Go files have a .go extension and belong to a package declared at the top.",
+            "examples": [
+                {
+                    "title": "Hello World",
+                    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, Go!\")\n}",
+                    "explanation": "Every executable program must use 'package main'. 'fmt' is the standard library for I/O."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the entry point of a Go program?",
+                    "difficulty": "easy",
+                    "solution": "The main function in package main."
+                }
+            ],
+            "completion_criteria": "Successfully run a Hello World program."
+        },
+        {
+            "chapter_id": 3,
+            "chapter_title": "Variables & Data Types",
+            "level": "beginner",
+            "theory": "Go is statically typed. Variables can be declared with 'var' or the short declaration operator ':='. Basic types include int, float64, string, and bool.",
+            "examples": [
+                {
+                    "title": "Variable Declaration",
+                    "code": "var name string = \"Go\"\nage := 10 // Type inferred as int\nconst Pi = 3.14",
+                    "explanation": "':=' can only be used inside functions. Constants are declared using 'const'."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "How do you declare a variable without specifying the type explicitly?",
+                    "difficulty": "easy",
+                    "solution": "Use the short declaration operator := (e.g., x := 5)."
+                }
+            ],
+            "completion_criteria": "Declare variables using different syntaxes."
+        },
+        {
+            "chapter_id": 4,
+            "chapter_title": "Control Flow",
+            "level": "beginner",
+            "theory": "Go has only one looping construct: 'for'. Conditional statements include 'if', 'else', and 'switch'. There are no while or do-while loops.",
+            "examples": [
+                {
+                    "title": "Loops and If-Else",
+                    "code": "for i := 0; i < 5; i++ {\n    if i%2 == 0 {\n        fmt.Println(i, \"is even\")\n    }\n}",
+                    "explanation": "The 'for' loop acts as both a traditional for loop and a while loop in Go."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "How do you write a 'while' loop in Go?",
+                    "difficulty": "medium",
+                    "solution": "Use 'for' with a single condition: for condition { ... }."
+                }
+            ],
+            "completion_criteria": "Write programs using loops and conditionals."
+        },
+        {
+            "chapter_id": 5,
+            "chapter_title": "Functions",
+            "level": "beginner",
+            "theory": "Functions are declared with the 'func' keyword. Go functions can return multiple values, which is commonly used for returning a result and an error.",
+            "examples": [
+                {
+                    "title": "Multiple Return Values",
+                    "code": "func swap(a, b string) (string, string) {\n    return b, a\n}\n\nx, y := swap(\"hello\", \"world\")",
+                    "explanation": "The return types are specified in parentheses after the parameters."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Can a Go function return more than one value?",
+                    "difficulty": "easy",
+                    "solution": "Yes, Go supports multiple return values."
+                }
+            ],
+            "completion_criteria": "create and call functions with multiple return values."
+        },
+        {
+            "chapter_id": 6,
+            "chapter_title": "Arrays, Slices & Maps",
+            "level": "beginner",
+            "theory": "Arrays have a fixed size. Slices are dynamic wrappers around arrays. Maps are key-value stores (hash tables). Slices and maps are reference types.",
+            "examples": [
+                {
+                    "title": "Slices and Maps",
+                    "code": "nums := []int{1, 2, 3} // Slice\nnums = append(nums, 4)\n\ncolors := map[string]string{\"red\": \"#f00\"}",
+                    "explanation": "Use 'make' to create slices or maps with initial capacity. Slices grow automatically."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the difference between an array and a slice?",
+                    "difficulty": "medium",
+                    "solution": "Arrays have fixed size; slices are dynamic views over arrays."
+                }
+            ],
+            "completion_criteria": "Manipulate collections using slices and maps."
+        },
+        {
+            "chapter_id": 7,
+            "chapter_title": "Strings & Runes",
+            "level": "intermediate",
+            "theory": "Strings are immutable sequences of bytes. A 'rune' represents a Unicode code point (int32). Range loops over strings iterate by rune, not byte.",
+            "examples": [
+                {
+                    "title": "String Traversal",
+                    "code": "str := \"Hi \u270B\"\nfor i, r := range str {\n    fmt.Printf(\"%d: %c\\n\", i, r)\n}",
+                    "explanation": "Iterating a string yields runes, handling multi-byte characters correctly."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What data type is a Rune alias for?",
+                    "difficulty": "easy",
+                    "solution": "int32"
+                }
+            ],
+            "completion_criteria": "Correctly handle Unicode strings."
+        },
+        {
+            "chapter_id": 8,
+            "chapter_title": "Structs",
+            "level": "intermediate",
+            "theory": "Structs are typed collections of fields. They are used to group data together. Go is not object-oriented in the traditional sense; classes are replaced by structs.",
+            "examples": [
+                {
+                    "title": "Defining a Struct",
+                    "code": "type Person struct {\n    Name string\n    Age  int\n}\n\np := Person{Name: \"Alice\", Age: 25}",
+                    "explanation": "Struct fields are accessed using dot notation."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "How do you instantiate a struct?",
+                    "difficulty": "easy",
+                    "solution": "Using struct literal syntax, e.g., p := Person{...}"
+                }
+            ],
+            "completion_criteria": "Define and use custom struct types."
+        },
+        {
+            "chapter_id": 9,
+            "chapter_title": "Methods & Interfaces",
+            "level": "intermediate",
+            "theory": "Methods are functions with a receiver argument. Interfaces define method signatures. A type implements an interface implicitly by implementing its methods.",
+            "examples": [
+                {
+                    "title": "Methods and Interfaces",
+                    "code": "type Speaker interface {\n    Speak() string\n}\n\nfunc (p Person) Speak() string {\n    return \"Hi!\"\n}",
+                    "explanation": "Person implements Speaker implicitly because it defines the Speak method."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Do you need to explicitly declare that a type implements an interface?",
+                    "difficulty": "medium",
+                    "solution": "No, implementation is implicit in Go."
+                }
+            ],
+            "completion_criteria": "Implement interfaces and attach methods to types."
+        },
+        {
+            "chapter_id": 10,
+            "chapter_title": "Error Handling",
+            "level": "intermediate",
+            "theory": "Go handles errors as values, returned as the last return value of functions. The 'error' type is a built-in interface. Panic and recover are used for exceptional cases.",
+            "examples": [
+                {
+                    "title": "Checking Errors",
+                    "code": "file, err := os.Open(\"file.txt\")\nif err != nil {\n    log.Fatal(err)\n}",
+                    "explanation": "Always check the error value immediately after the function call."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the idiomatic way to handle errors in Go?",
+                    "difficulty": "easy",
+                    "solution": "Check if the returned error value is not nil."
+                }
+            ],
+            "completion_criteria": "Write robust code with proper error checking."
+        },
+        {
+            "chapter_id": 11,
+            "chapter_title": "Packages & Modules",
+            "level": "intermediate",
+            "theory": "Go code is organized into packages. A module is a collection of packages. 'go.mod' manages dependencies. Exported names (public) start with a capital letter.",
+            "examples": [
+                {
+                    "title": "Exported Names",
+                    "code": "package mathutil\n\nfunc Add(a, b int) int { // Exported\n    return a + b\n}",
+                    "explanation": "Functions starting with Uppercase are accessible from other packages."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "How do you make a function public (accessible from other packages)?",
+                    "difficulty": "easy",
+                    "solution": "Capitalize the first letter of its name."
+                }
+            ],
+            "completion_criteria": "Organize code into reusable packages."
+        },
+        {
+            "chapter_id": 12,
+            "chapter_title": "File Handling",
+            "level": "intermediate",
+            "theory": "The 'os' and 'io' packages provide file I/O capabilities. 'defer' is often used to ensure files are closed after operations complete.",
+            "examples": [
+                {
+                    "title": "Reading a File",
+                    "code": "f, _ := os.Open(\"data.txt\")\ndefer f.Close()\n\nb := make([]byte, 10)\nf.Read(b)",
+                    "explanation": "'defer f.Close()' ensures the file is closed when the function exits."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What does the 'defer' keyword do?",
+                    "difficulty": "medium",
+                    "solution": "Schedules a function call to run immediately before the surrounding function returns."
+                }
+            ],
+            "completion_criteria": "Read from and write to files using standard libraries."
+        },
+        {
+            "chapter_id": 13,
+            "chapter_title": "Goroutines",
+            "level": "advanced",
+            "theory": "Goroutines are lightweight threads managed by the Go runtime. They are started with the 'go' keyword. They enable concurrent execution with very little overhead.",
+            "examples": [
+                {
+                    "title": "Starting a Goroutine",
+                    "code": "func printNums() {\n    fmt.Println(\"1 2 3\")\n}\n\nfunc main() {\n    go printNums()\n    time.Sleep(time.Second) // Wait definition\n}",
+                    "explanation": "'go printNums()' runs the function concurrently."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which keyword starts a new goroutine?",
+                    "difficulty": "easy",
+                    "solution": "go"
+                }
+            ],
+            "completion_criteria": "Launch concurrent tasks using goroutines."
+        },
+        {
+            "chapter_id": 14,
+            "chapter_title": "Channels",
+            "level": "advanced",
+            "theory": "Channels are typed conduits for sending and receiving data between goroutines. They synchronize execution and prevent race conditions. Unbuffered channels block until send/receive.",
+            "examples": [
+                {
+                    "title": "Using Channels",
+                    "code": "ch := make(chan int)\n\ngo func() { ch <- 42 }() // Send\nval := <-ch              // Receive",
+                    "explanation": "Data flows in the direction of the arrow."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What happens when you send to an unbuffered channel with no receiver?",
+                    "difficulty": "advanced",
+                    "solution": "The sender blocks until a receiver is ready."
+                }
+            ],
+            "completion_criteria": "Communicate between goroutines safely."
+        },
+        {
+            "chapter_id": 15,
+            "chapter_title": "Concurrency Patterns",
+            "level": "advanced",
+            "theory": "Common patterns include Worker Pools (distributing tasks), Fan-in (combining results), and Fan-out. 'select' allows waiting on multiple channel operations.",
+            "examples": [
+                {
+                    "title": "Select Statement",
+                    "code": "select {\ncase msg1 := <-ch1:\n    fmt.Println(msg1)\ncase msg2 := <-ch2:\n    fmt.Println(msg2)\n}",
+                    "explanation": "'select' blocks until one of its cases can run."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What construct allows waiting on multiple channels simultaneously?",
+                    "difficulty": "medium",
+                    "solution": "The 'select' statement."
+                }
+            ],
+            "completion_criteria": "Implement robust concurrent designs."
+        },
+        {
+            "chapter_id": 16,
+            "chapter_title": "Memory Management",
+            "level": "advanced",
+            "theory": "Go uses a garbage collector (GC). Variables can be allocated on the stack (fast) or heap (GC managed). Escape analysis determines where variables live.",
+            "examples": [
+                {
+                    "title": "Pointers and Allocation",
+                    "code": "func newInt() *int {\n    x := 10\n    return &x // x escapes to heap\n}",
+                    "explanation": "Returning a reference to a local variable is safe in Go; the compiler moves it to the heap."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Does Go have manual memory management like malloc/free?",
+                    "difficulty": "easy",
+                    "solution": "No, it uses automatic garbage collection."
+                }
+            ],
+            "completion_criteria": "Understand stack vs. heap allocation."
+        },
+        {
+            "chapter_id": 17,
+            "chapter_title": "Common Go Interview Patterns",
+            "level": "advanced",
+            "theory": "Interviews often focus on slices internals and concurrency. Questions like 'Implement a thread-safe counter' or 'Merge N channels' are common.",
+            "examples": [
+                {
+                    "title": "Thread-Safe Counter",
+                    "code": "type SafeCounter struct {\n    mu sync.Mutex\n    v  int\n}\n\nfunc (c *SafeCounter) Inc() {\n    c.mu.Lock()\n    c.v++\n    c.mu.Unlock()\n}",
+                    "explanation": "Using 'sync.Mutex' protects shared state from race conditions."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "How do you prevent data races in shared variables?",
+                    "difficulty": "medium",
+                    "solution": "Use synchronization primitives like sync.Mutex or Channels."
+                }
+            ],
+            "completion_criteria": "Solve common Go coding interview problems."
+        },
+        {
+            "chapter_id": 18,
+            "chapter_title": "Go Best Practices",
+            "level": "advanced",
+            "theory": "Follow 'Effective Go'. Use 'gofmt' to format code. Prefer composition over inheritance. Keep interfaces small. Handle errors explicitly.",
+            "examples": [
+                {
+                    "title": "Effective Go",
+                    "code": "// Bad: if err != nil { return err } else { return nil }\n// Good: if err != nil { return err }\n//       return nil",
+                    "explanation": "Reduce nesting by handling errors early and returning."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What tool should you use to format Go code?",
+                    "difficulty": "easy",
+                    "solution": "gofmt"
+                }
+            ],
+            "completion_criteria": "Write clean, idiomatic Go code."
+        }
+    ],
+    "quick_reference": {
+        "keywords": [
+            "go",
+            "chan",
+            "defer",
+            "func",
+            "interface",
+            "map",
+            "package",
+            "range",
+            "select",
+            "struct",
+            "var",
+            "type"
+        ],
+        "data_types": [
+            "bool",
+            "string",
+            "int",
+            "int64",
+            "float64",
+            "byte",
+            "rune",
+            "error"
+        ],
+        "operators": [
+            ":=",
+            "<-",
+            "&",
+            "*",
+            "++",
+            "--",
+            "...",
+            "=="
+        ],
+        "common_patterns": [
+            "if err != nil",
+            "defer loop",
+            "NewStruct() wrapper",
+            "Table-driven tests"
+        ]
+    }
+}

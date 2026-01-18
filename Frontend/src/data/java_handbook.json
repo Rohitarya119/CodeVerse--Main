@@ -1,0 +1,932 @@
+{
+    "language": "Java",
+    "total_chapters": 28,
+    "estimated_hours": 15,
+    "chapters": [
+        {
+            "chapter_id": 1,
+            "chapter_title": "Introduction to Java & JVM",
+            "level": "beginner",
+            "theory": "Java is a high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers 'write once, run anywhere' (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation.\n\nThe Java Virtual Machine (JVM) is the engine that drives the Java code. It converts Java bytecode into machine language. The Java Development Kit (JDK) includes the JRE (Java Runtime Environment) and development tools like compilers and debuggers.",
+            "examples": [
+                {
+                    "title": "Java Architecture",
+                    "code": "// Source Code (.java) -> Compiler (javac) -> Bytecode (.class) -> JVM -> Machine Code",
+                    "explanation": "Flow of Java program execution."
+                },
+                {
+                    "title": "Version Check",
+                    "code": "public class VersionCheck {\n    public static void main(String[] args) {\n        System.out.println(System.getProperty(\"java.version\"));\n    }\n}",
+                    "explanation": "Prints current Java version."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What does WORA stand for?",
+                    "difficulty": "easy",
+                    "solution": "Write Once, Run Anywhere"
+                },
+                {
+                    "question": "Which component converts bytecode to machine code?",
+                    "difficulty": "easy",
+                    "solution": "JVM"
+                }
+            ],
+            "completion_criteria": "Understands the role of JVM, JRE, and JDK in the Java ecosystem."
+        },
+        {
+            "chapter_id": 2,
+            "chapter_title": "Java Setup & First Program",
+            "level": "beginner",
+            "theory": "A basic Java program consists of a class definition and a `main` method. The `main` method is the entry point of the application. Java is case-sensitive, and the class name must match the filename.\n\n`System.out.println()` is the standard method to print output to the console. Every statement in Java must end with a semicolon.",
+            "examples": [
+                {
+                    "title": "Hello World",
+                    "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+                    "explanation": "Standard entry point and output."
+                },
+                {
+                    "title": "Comments",
+                    "code": "// Single line\n/* Multi-line\n   Comment */",
+                    "explanation": "Ignored by compiler."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the entry point method signature?",
+                    "difficulty": "easy",
+                    "solution": "public static void main(String[] args)"
+                },
+                {
+                    "question": "Write code to print 'Java' to console.",
+                    "difficulty": "easy",
+                    "solution": "System.out.println(\"Java\");"
+                }
+            ],
+            "completion_criteria": "Can write, compile, and run a simple Java class."
+        },
+        {
+            "chapter_id": 3,
+            "chapter_title": "Variables & Data Types",
+            "level": "beginner",
+            "theory": "Java is statically typed. Variables must be declared with a type. Primitive types include `int`, `double`, `boolean`, `char`, `byte`, `short`, `long`, and `float`. Non-primitive types include Classes, Interfaces, and Arrays.\n\n`String` is a reference type, not a primitive. Constants are declared using the `final` keyword.",
+            "examples": [
+                {
+                    "title": "Primitives",
+                    "code": "int age = 30;\ndouble price = 19.99;\nchar grade = 'A';\nboolean isActive = true;",
+                    "explanation": "Declaration and initialization."
+                },
+                {
+                    "title": "Constants",
+                    "code": "final double PI = 3.14159;",
+                    "explanation": "Cannot be reassigned."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Declare a constant integer `MAX` with value 100.",
+                    "difficulty": "easy",
+                    "solution": "final int MAX = 100;"
+                },
+                {
+                    "question": "Which data type is used for true/false values?",
+                    "difficulty": "easy",
+                    "solution": "boolean"
+                }
+            ],
+            "completion_criteria": "Can correctly use primitive types and declare variables."
+        },
+        {
+            "chapter_id": 4,
+            "chapter_title": "Input & Output",
+            "level": "beginner",
+            "theory": "The `Scanner` class in `java.util` is commonly used for reading input from different sources, including the console (`System.in`). It provides methods like `nextInt()`, `nextLine()`, and `nextDouble()`.\n\nOutput is handled via `System.out`, typically using `print`, `println`, or `printf` for formatted output.",
+            "examples": [
+                {
+                    "title": "Reading Input",
+                    "code": "import java.util.Scanner;\nScanner scanner = new Scanner(System.in);\nString name = scanner.nextLine();",
+                    "explanation": "Reads a full line of text."
+                },
+                {
+                    "title": "Formatted Output",
+                    "code": "double pi = 3.14159;\nSystem.out.printf(\"Pi is %.2f\", pi);",
+                    "explanation": "Prints 'Pi is 3.14'."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which method reads an integer from Scanner?",
+                    "difficulty": "easy",
+                    "solution": "nextInt()"
+                },
+                {
+                    "question": "Import statement needed for Scanner?",
+                    "difficulty": "easy",
+                    "solution": "import java.util.Scanner;"
+                }
+            ],
+            "completion_criteria": "Can interact with the user via console I/O."
+        },
+        {
+            "chapter_id": 5,
+            "chapter_title": "Operators & Expressions",
+            "level": "beginner",
+            "theory": "Java supports arithmetic (`+`, `-`, `*`, `/`, `%`), assignment (`=`, `+=`), comparison (`==`, `!=`, `>`, `<`), and logical (`&&`, `||`, `!`) operators. The bitwise operators (`&`, `|`, `^`, `<<`, `>>`) allow manipulation of individual bits.\n\nOperator precedence rules determine the order of evaluation in complex expressions.",
+            "examples": [
+                {
+                    "title": "Arithmetic",
+                    "code": "int x = 10;\nint y = 3;\nint remainder = x % y; // 1",
+                    "explanation": "Modulus operator."
+                },
+                {
+                    "title": "Ternary Operator",
+                    "code": "int max = (a > b) ? a : b;",
+                    "explanation": "Shorthand for if-else."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is result of `10 / 4` in Java?",
+                    "difficulty": "medium",
+                    "solution": "2"
+                },
+                {
+                    "question": "Write a ternary expression to check if 'n' is even.",
+                    "difficulty": "medium",
+                    "solution": "(n % 2 == 0) ? true : false"
+                }
+            ],
+            "completion_criteria": "Can construct complex logical and arithmetic expressions."
+        },
+        {
+            "chapter_id": 6,
+            "chapter_title": "Control Flow (if, switch)",
+            "level": "beginner",
+            "theory": "Java uses standard control flow structures. `if`, `else if`, and `else` allow conditional branching. The `switch` statement selects one of many code blocks to be executed, supporting primitives, Strings, and Enums.\n\nEnhanced switch expressions (Java 14+) allow returning values and multiple labels per case.",
+            "examples": [
+                {
+                    "title": "Switch Statement",
+                    "code": "switch(day) {\n  case 1: System.out.println(\"Monday\"); break;\n  default: System.out.println(\"Other\");\n}",
+                    "explanation": "Direct branching."
+                },
+                {
+                    "title": "If-Else",
+                    "code": "if (score >= 90) src = \"A\";\nelse if (score >= 80) src = \"B\";",
+                    "explanation": "Conditional logic."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to exit a switch case?",
+                    "difficulty": "easy",
+                    "solution": "break"
+                },
+                {
+                    "question": "Can strings be used in switch statements?",
+                    "difficulty": "easy",
+                    "solution": "Yes"
+                }
+            ],
+            "completion_criteria": "Can assert logical control over program execution path."
+        },
+        {
+            "chapter_id": 7,
+            "chapter_title": "Loops (for, while)",
+            "level": "beginner",
+            "theory": "Loops execute a block of code repeatedly. `for` loops are for a known number of iterations. `while` loops run while a condition is true. `do-while` loops guarantee one execution.\n\nThe 'enhanced for loop' (foreach) simplifies iterating over arrays and collections.",
+            "examples": [
+                {
+                    "title": "Enhanced For Loop",
+                    "code": "int[] numbers = {1, 2, 3};\nfor (int n : numbers) {\n    System.out.println(n);\n}",
+                    "explanation": "Iterates through all elements."
+                },
+                {
+                    "title": "While Loop",
+                    "code": "int i = 0;\nwhile (i < 5) {\n    i++;\n}",
+                    "explanation": "Standard condition checking."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Write a for loop from 0 to 9.",
+                    "difficulty": "easy",
+                    "solution": "for(int i=0; i<10; i++)"
+                },
+                {
+                    "question": "Keyword to skip the current iteration?",
+                    "difficulty": "easy",
+                    "solution": "continue"
+                }
+            ],
+            "completion_criteria": "Can implement iterative logic efficiently."
+        },
+        {
+            "chapter_id": 8,
+            "chapter_title": "Methods & Parameters",
+            "level": "beginner",
+            "theory": "Methods define behavior. They are composed of modifiers, return type, name, parameters, and a body. `static` methods belong to the class rather than an instance.\n\nJava uses pass-by-value. For objects, the reference value is passed, allowing methods to modify the object's state but not the reference itself.",
+            "examples": [
+                {
+                    "title": "Defining a Method",
+                    "code": "public static int add(int a, int b) {\n    return a + b;\n}",
+                    "explanation": "Static utility method."
+                },
+                {
+                    "title": "Calling a Method",
+                    "code": "int sum = add(5, 10);",
+                    "explanation": "Invoking the function."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Return type for a method that returns nothing?",
+                    "difficulty": "easy",
+                    "solution": "void"
+                },
+                {
+                    "question": "Can you define two methods with same name but different params?",
+                    "difficulty": "easy",
+                    "solution": "Yes (Overloading)"
+                }
+            ],
+            "completion_criteria": "Can modularize code into reusable methods."
+        },
+        {
+            "chapter_id": 9,
+            "chapter_title": "Arrays",
+            "level": "beginner",
+            "theory": "Arrays are containers holding valid types of a fixed size. They are objects in Java. Indices are 0-based. The `length` property gives the size of the array.\n\nMulti-dimensional arrays are arrays of arrays.",
+            "examples": [
+                {
+                    "title": "Declaration",
+                    "code": "int[] nums = new int[5];\nnums[0] = 10;",
+                    "explanation": "Creates array of size 5."
+                },
+                {
+                    "title": "Initialization",
+                    "code": "String[] fruits = {\"Apple\", \"Banana\"};",
+                    "explanation": "Inline definition."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Access the last element of array `arr`.",
+                    "difficulty": "medium",
+                    "solution": "arr[arr.length - 1]"
+                },
+                {
+                    "question": "Exception thrown when accessing invalid index?",
+                    "difficulty": "medium",
+                    "solution": "ArrayIndexOutOfBoundsException"
+                }
+            ],
+            "completion_criteria": "Can store and manipulate fixed sets of data."
+        },
+        {
+            "chapter_id": 10,
+            "chapter_title": "Strings & StringBuilder",
+            "level": "intermediate",
+            "theory": "`String` is immutable in Java. Modifying a string creates a new object in the String Pool. `StringBuilder` (and the thread-safe `StringBuffer`) is mutable and should be used for frequent string manipulations to save memory.\n\nComparison of strings should always use `.equals()` instead of `==`.",
+            "examples": [
+                {
+                    "title": "String Comparison",
+                    "code": "String s1 = \"Hello\";\nString s2 = new String(\"Hello\");\nboolean eq = s1.equals(s2); // true",
+                    "explanation": "Checks content equality."
+                },
+                {
+                    "title": "StringBuilder",
+                    "code": "StringBuilder sb = new StringBuilder(\"Java\");\nsb.append(\" 17\");\nString res = sb.toString();",
+                    "explanation": "Efficient modification."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Why is String immutable?",
+                    "difficulty": "medium",
+                    "solution": "Security, Synchronization, Caching"
+                },
+                {
+                    "question": "Method to check string length?",
+                    "difficulty": "easy",
+                    "solution": "length()"
+                }
+            ],
+            "completion_criteria": "Understands string immutability and efficient text processing."
+        },
+        {
+            "chapter_id": 11,
+            "chapter_title": "Object-Oriented Basics",
+            "level": "intermediate",
+            "theory": "Everything in Java is associated with classes and objects. A Class is a blueprint; an Object is an instance. Key concepts include state (fields) and behavior (methods).\n\nInstantiation is done using the `new` keyword.",
+            "examples": [
+                {
+                    "title": "Class Definition",
+                    "code": "class Car {\n    String color;\n    void drive() { System.out.println(\"Vroom\"); }\n}",
+                    "explanation": "Blueprint for Car."
+                },
+                {
+                    "title": "Instantiation",
+                    "code": "Car myCar = new Car();\nmyCar.color = \"Red\";",
+                    "explanation": "Creating an object."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to create an object instance?",
+                    "difficulty": "easy",
+                    "solution": "new"
+                },
+                {
+                    "question": "Variable defined inside a class but outside methods?",
+                    "difficulty": "easy",
+                    "solution": "Field / Instance Variable"
+                }
+            ],
+            "completion_criteria": "Can model real-world entities using classes and objects."
+        },
+        {
+            "chapter_id": 12,
+            "chapter_title": "Constructors & this keyword",
+            "level": "intermediate",
+            "theory": "Constructors initialize new objects. They share the name of the class and have no return type. The `this` keyword refers to the current object instance, useful for resolving naming conflicts or calling other constructors.\n\nJava provides a default no-arg constructor if none are defined.",
+            "examples": [
+                {
+                    "title": "Constructor",
+                    "code": "class Person {\n    String name;\n    Person(String name) {\n        this.name = name;\n    }\n}",
+                    "explanation": "Parameterized constructor."
+                },
+                {
+                    "title": "Chaining",
+                    "code": "Person() {\n    this(\"Unknown\");\n}",
+                    "explanation": "Calling another constructor."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the return type of a constructor?",
+                    "difficulty": "easy",
+                    "solution": "None"
+                },
+                {
+                    "question": "Keyword to refer to current instance.",
+                    "difficulty": "easy",
+                    "solution": "this"
+                }
+            ],
+            "completion_criteria": "Can manage object initialization semantics."
+        },
+        {
+            "chapter_id": 13,
+            "chapter_title": "Inheritance",
+            "level": "intermediate",
+            "theory": "Inheritance allows a class (subclass) to acquire properties of another class (superclass) using the `extends` keyword. Java supports single class inheritance but multiple interface inheritance.\n\nThe `super` keyword refers to the parent class instance.",
+            "examples": [
+                {
+                    "title": "Using Extends",
+                    "code": "class Animal { void eat() {} }\nclass Dog extends Animal { void bark() {} }",
+                    "explanation": "Dog is an Animal."
+                },
+                {
+                    "title": "Super Constructor",
+                    "code": "Dog(String name) {\n    super(name);\n}",
+                    "explanation": "Calls parent constructor."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to inherit a class?",
+                    "difficulty": "easy",
+                    "solution": "extends"
+                },
+                {
+                    "question": "Can a class extend multiple classes?",
+                    "difficulty": "easy",
+                    "solution": "No"
+                }
+            ],
+            "completion_criteria": "Can create class hierarchies to promote code reuse."
+        },
+        {
+            "chapter_id": 14,
+            "chapter_title": "Polymorphism & Method Overriding",
+            "level": "intermediate",
+            "theory": "Polymorphism means 'many forms'. It allows an object to be treated as its parent type. Method Overriding happens when a subclass provides a specific implementation of a method already defined in its parent.\n\nThe `@Override` annotation is best practice to ensure compilation checks.",
+            "examples": [
+                {
+                    "title": "Overriding",
+                    "code": "class Cat extends Animal {\n    @Override\n    void eat() { System.out.println(\"Fish\"); }\n}",
+                    "explanation": "Specific implementation."
+                },
+                {
+                    "title": "Dynamic Dispatch",
+                    "code": "Animal a = new Cat();\na.eat(); // Prints \"Fish\"",
+                    "explanation": "Runtime resolution."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Annotation used for overriding?",
+                    "difficulty": "easy",
+                    "solution": "@Override"
+                },
+                {
+                    "question": "Is method overloading polymorphism?",
+                    "difficulty": "medium",
+                    "solution": "Yes (Compile-time)"
+                }
+            ],
+            "completion_criteria": "Can implement flexible code using run-time polymorphism."
+        },
+        {
+            "chapter_id": 15,
+            "chapter_title": "Abstraction & Interfaces",
+            "level": "intermediate",
+            "theory": "Abstraction hides implementation details. Abstract classes (`abstract`) cannot be instantiated and may have abstract methods. Interfaces (`interface`) define a contract that classes `implements`. Interfaces can have default and static methods (Java 8+).\n\nA class can implement multiple interfaces.",
+            "examples": [
+                {
+                    "title": "Interface",
+                    "code": "interface Flyable {\n    void fly();\n}\nclass Bird implements Flyable {\n    public void fly() { /*...*/ }\n}",
+                    "explanation": "Defining a contract."
+                },
+                {
+                    "title": "Abstract Class",
+                    "code": "abstract class Shape {\n    abstract void draw();\n}",
+                    "explanation": "Partial implementation."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to implement an interface?",
+                    "difficulty": "easy",
+                    "solution": "implements"
+                },
+                {
+                    "question": "Can an abstract class have constructors?",
+                    "difficulty": "medium",
+                    "solution": "Yes"
+                }
+            ],
+            "completion_criteria": "Can design systems using contracts and abstract types."
+        },
+        {
+            "chapter_id": 16,
+            "chapter_title": "Encapsulation & Access Modifiers",
+            "level": "intermediate",
+            "theory": "Encapsulation bundles data and methods, restricting direct access. Access modifiers control declaration visibility: `public` (world), `protected` (package + subclasses), `default` (package), and `private` (class only).\n\nGetters and Setters are standard patterns to access private fields.",
+            "examples": [
+                {
+                    "title": "Private Field",
+                    "code": "class Account {\n    private double balance;\n    public double getBalance() { return balance; }\n}",
+                    "explanation": "Hiding state."
+                },
+                {
+                    "title": "Setter Validation",
+                    "code": "public void setAge(int age) {\n    if(age > 0) this.age = age;\n}",
+                    "explanation": "Controlled modification."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Modifier for access within the same package only?",
+                    "difficulty": "medium",
+                    "solution": "default (no modifier)"
+                },
+                {
+                    "question": "Modifier for access only within the class?",
+                    "difficulty": "easy",
+                    "solution": "private"
+                }
+            ],
+            "completion_criteria": "Can properly protect data integrity using access controls."
+        },
+        {
+            "chapter_id": 17,
+            "chapter_title": "Packages & Imports",
+            "level": "intermediate",
+            "theory": "Packages organize classes into namespaces to avoid naming conflicts. The `package` statement must be the first line. `import` brings other classes into visibility.\n\n`java.lang` is imported by default. Wildcard imports (`import java.util.*;`) import all classes in a package.",
+            "examples": [
+                {
+                    "title": "Package Declaration",
+                    "code": "package com.example.models;\npublic class User {}",
+                    "explanation": "Defining namespace."
+                },
+                {
+                    "title": "Importing",
+                    "code": "import java.util.List;\nimport java.util.ArrayList;",
+                    "explanation": "Using external classes."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which package is imported automatically?",
+                    "difficulty": "easy",
+                    "solution": "java.lang"
+                },
+                {
+                    "question": "Statement to declare the current file's package?",
+                    "difficulty": "easy",
+                    "solution": "package"
+                }
+            ],
+            "completion_criteria": "Can structure large projects using packages."
+        },
+        {
+            "chapter_id": 18,
+            "chapter_title": "Exception Handling",
+            "level": "intermediate",
+            "theory": "Exceptions are events that disrupt normal flow. Java uses `try`, `catch`, `finally`, `throw`, and `throws`. Checked exceptions (e.g., `IOException`) must be handled; unchecked exceptions (e.g., `NullPointerException`) do not force handling.\n\n`finally` blocks execute regardless of whether an exception occurred.",
+            "examples": [
+                {
+                    "title": "Try-Catch-Finally",
+                    "code": "try {\n    int a = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\"Error\");\n} finally {\n    System.out.println(\"Done\");\n}",
+                    "explanation": "Handling division by zero."
+                },
+                {
+                    "title": "Throwing",
+                    "code": "if (age < 0) throw new IllegalArgumentException(\"Invalid\");",
+                    "explanation": "Manual exception raising."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which block always executes in try-catch?",
+                    "difficulty": "easy",
+                    "solution": "finally"
+                },
+                {
+                    "question": "Is `NullPointerException` checked or unchecked?",
+                    "difficulty": "medium",
+                    "solution": "Unchecked"
+                }
+            ],
+            "completion_criteria": "Can write robust code that gracefully handles errors."
+        },
+        {
+            "chapter_id": 19,
+            "chapter_title": "File Handling",
+            "level": "intermediate",
+            "theory": "The `java.io` and `java.nio` packages handle I/O. `File` represents a distinct file or directory. Reading/writing is done via streams (`FileInputStream`) or readers/writers (`FileReader`).\n\nThe `try-with-resources` statement (Java 7+) ensures streams are auto-closed.",
+            "examples": [
+                {
+                    "title": "Writing File",
+                    "code": "import java.io.FileWriter;\ntry (FileWriter writer = new FileWriter(\"test.txt\")) {\n    writer.write(\"Hello\");\n}",
+                    "explanation": "Auto-closing writer."
+                },
+                {
+                    "title": "Reading File",
+                    "code": "Files.readAllLines(Paths.get(\"input.txt\"));",
+                    "explanation": "Simple NIO reading."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Class used to read property of a file?",
+                    "difficulty": "easy",
+                    "solution": "File"
+                },
+                {
+                    "question": "Feature that auto-closes resources?",
+                    "difficulty": "medium",
+                    "solution": "Try-with-resources"
+                }
+            ],
+            "completion_criteria": "Can persist data to the file system."
+        },
+        {
+            "chapter_id": 20,
+            "chapter_title": "Collections Framework",
+            "level": "advanced",
+            "theory": "The Java Collections Framework provides data structures like `List` (ArrayList, LinkedList), `Set` (HashSet, TreeSet), and `Map` (HashMap, TreeMap). `List` is ordered, `Set` is unique, and `Map` is key-value pairs.\n\n`Collections` utility class provides sorting and searching algorithms.",
+            "examples": [
+                {
+                    "title": "ArrayList",
+                    "code": "List<String> list = new ArrayList<>();\nlist.add(\"Java\");\nString s = list.get(0);",
+                    "explanation": "Dynamic array."
+                },
+                {
+                    "title": "HashMap",
+                    "code": "Map<String, Integer> map = new HashMap<>();\nmap.put(\"A\", 1);\nint val = map.get(\"A\");",
+                    "explanation": "Key-value store."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which collection allows no duplicates?",
+                    "difficulty": "easy",
+                    "solution": "Set"
+                },
+                {
+                    "question": "Implementation of List that is a doubly-linked list?",
+                    "difficulty": "medium",
+                    "solution": "LinkedList"
+                }
+            ],
+            "completion_criteria": "Can select and utilize appropriate data structures."
+        },
+        {
+            "chapter_id": 21,
+            "chapter_title": "Generics",
+            "level": "advanced",
+            "theory": "Generics enable types (classes and interfaces) to be parameters when defining classes, interfaces, and methods. This adds compile-time type safety and eliminates casting.\n\nWildcards `?` allow for flexible type constraints (e.g., `List<? extends Number>`).",
+            "examples": [
+                {
+                    "title": "Generic Class",
+                    "code": "class Box<T> {\n    T t;\n    void set(T t) { this.t = t; }\n    T get() { return t; }\n}",
+                    "explanation": "Type-safe container."
+                },
+                {
+                    "title": "Generic Method",
+                    "code": "public <E> void printArray(E[] arr) {\n    for (E e : arr) System.out.print(e);\n}",
+                    "explanation": "Works on any reference type."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Symbol for wildcard generic?",
+                    "difficulty": "easy",
+                    "solution": "?"
+                },
+                {
+                    "question": "Can generics operate on primitive types directly?",
+                    "difficulty": "medium",
+                    "solution": "No (use wrappers)"
+                }
+            ],
+            "completion_criteria": "Can write reusable, type-safe API components."
+        },
+        {
+            "chapter_id": 22,
+            "chapter_title": "Comparable & Comparator",
+            "level": "advanced",
+            "theory": "`Comparable` defines the natural ordering of a class (implement `compareTo`). `Comparator` allows defining multiple custom ordering strategies (implement `compare`).\n\nThese are essential for sorting Lists and used by default in `TreeSet` / `TreeMap`.",
+            "examples": [
+                {
+                    "title": "Comparable",
+                    "code": "class User implements Comparable<User> {\n    public int compareTo(User u) {\n        return this.id - u.id;\n    }\n}",
+                    "explanation": "Sorts by ID naturally."
+                },
+                {
+                    "title": "Comparator",
+                    "code": "Collections.sort(users, (u1, u2) -> u1.name.compareTo(u2.name));",
+                    "explanation": "Sort by name using lambda."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Interface for natural ordering?",
+                    "difficulty": "easy",
+                    "solution": "Comparable"
+                },
+                {
+                    "question": "Method signature for compareTo?",
+                    "difficulty": "medium",
+                    "solution": "int compareTo(T o)"
+                }
+            ],
+            "completion_criteria": "Can master sorting logic for custom objects."
+        },
+        {
+            "chapter_id": 23,
+            "chapter_title": "Multithreading Basics",
+            "level": "advanced",
+            "theory": "Multithreading allows concurrent execution of parts of a program. Threads can be created by extending `Thread` class or implementing `Runnable` interface. The `ExecutorService` is the modern way to manage thread pools.\n\nLifecycle states include New, Runnable, Blocked, Waiting, and Terminated.",
+            "examples": [
+                {
+                    "title": "Runnable",
+                    "code": "Runnable task = () -> System.out.println(\"Running\");\nThread t = new Thread(task);\nt.start();",
+                    "explanation": "Basic thread creation."
+                },
+                {
+                    "title": "ExecutorService",
+                    "code": "ExecutorService exec = Executors.newFixedThreadPool(2);\nexec.submit(task);",
+                    "explanation": "Managed Thread Pool."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Method to begin thread execution?",
+                    "difficulty": "easy",
+                    "solution": "start()"
+                },
+                {
+                    "question": "Functional interface for defining a task?",
+                    "difficulty": "medium",
+                    "solution": "Runnable"
+                }
+            ],
+            "completion_criteria": "Can implement concurrent applications."
+        },
+        {
+            "chapter_id": 24,
+            "chapter_title": "Synchronization & Concurrency",
+            "level": "advanced",
+            "theory": "Concurrency issues arise when threads access shared resources. `synchronized` keyword locks an object or method to ensure mutual exclusion. `volatile` guarantees visibility of changes across threads.\n\nThe `java.util.concurrent` package provides locks, atomic variables, and concurrent collections.",
+            "examples": [
+                {
+                    "title": "Synchronized Method",
+                    "code": "public synchronized void increment() {\n    count++;\n}",
+                    "explanation": "Thread-safe increment."
+                },
+                {
+                    "title": "Atomic Integer",
+                    "code": "AtomicInteger count = new AtomicInteger(0);\ncount.incrementAndGet();",
+                    "explanation": "Lock-free thread safety."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to lock a method?",
+                    "difficulty": "easy",
+                    "solution": "synchronized"
+                },
+                {
+                    "question": "Prevents thread caching of variable?",
+                    "difficulty": "medium",
+                    "solution": "volatile"
+                }
+            ],
+            "completion_criteria": "Can write thread-safe code and avoid race conditions."
+        },
+        {
+            "chapter_id": 25,
+            "chapter_title": "Java Memory Model",
+            "level": "advanced",
+            "theory": "Java manages memory via Stack and Heap. Stack stores method frames and primitives; Heap stores objects. Reference variables on the Stack point to objects on the Heap.\n\nUnderstanding memory leaks (unused references) is crucial for performance tuning.",
+            "examples": [
+                {
+                    "title": "Stack vs Heap",
+                    "code": "void method() {\n    int x = 10; // Stack\n    User u = new User(); // u ref on Stack, object on Heap\n}",
+                    "explanation": "Scope vs Lifetime."
+                },
+                {
+                    "title": "OutOfMemoryError",
+                    "code": "// Occurs when Heap is full due to memory leaks\n// e.g. Adding to static list forever",
+                    "explanation": "Heap exhaustion."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Where are objects stored?",
+                    "difficulty": "easy",
+                    "solution": "Heap"
+                },
+                {
+                    "question": "Where are local primitive variables stored?",
+                    "difficulty": "medium",
+                    "solution": "Stack"
+                }
+            ],
+            "completion_criteria": "Understands underlying memory architecture of Java applications."
+        },
+        {
+            "chapter_id": 26,
+            "chapter_title": "JVM Internals & Garbage Collection",
+            "level": "advanced",
+            "theory": "The Garbage Collector (GC) automatically reclaims memory of unreachable objects. Generations (Young, Old, Perm/Metaspace) optimize this process. Important algorithms include G1, CMS, and ZGC.\n\n`System.gc()` suggests cleanup but does not guarantee it.",
+            "examples": [
+                {
+                    "title": "Making Object Eligible",
+                    "code": "String s = new String(\"Data\");\ns = null; // Original object now eligible for GC",
+                    "explanation": "Removing reference."
+                },
+                {
+                    "title": "Finalize (Deprecated)",
+                    "code": "// Do not use finalize() for cleanup\n// Use try-with-resources instead",
+                    "explanation": "Avoid finalizers."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Part of Heap for new objects?",
+                    "difficulty": "medium",
+                    "solution": "Young Generation / Eden Space"
+                },
+                {
+                    "question": "Does setting to null guarantee immediate GC?",
+                    "difficulty": "easy",
+                    "solution": "No"
+                }
+            ],
+            "completion_criteria": "Can reason about application performance and lifecycle."
+        },
+        {
+            "chapter_id": 27,
+            "chapter_title": "Common Java Interview Patterns",
+            "level": "advanced",
+            "theory": "Interviews often focus on Design Patterns (Singleton, Factory, Observer), Java 8 Stream API intricacies, and Collection performance complexity (Big O). Equals/HashCode contract is a frequent topic.\n\nKnowing implementation details of `HashMap` (buckets, collision via LinkedList/Tree) is key.",
+            "examples": [
+                {
+                    "title": "Singleton Pattern",
+                    "code": "public class Singleton {\n    private static final Singleton INSTANCE = new Singleton();\n    private Singleton() {}\n    public static Singleton getInstance() { return INSTANCE; }\n}",
+                    "explanation": "Eager initialization."
+                },
+                {
+                    "title": "Stream groupingBy",
+                    "code": "Map<String, List<User>> byCity = users.stream()\n    .collect(Collectors.groupingBy(User::getCity));",
+                    "explanation": "Complex stream operation."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which two methods must be overridden together?",
+                    "difficulty": "variable",
+                    "solution": "equals and hashCode"
+                },
+                {
+                    "question": "Complexity of HashMap get()?",
+                    "difficulty": "medium",
+                    "solution": "O(1) average"
+                }
+            ],
+            "completion_criteria": "Ready for technical assessments on Java specifics."
+        },
+        {
+            "chapter_id": 28,
+            "chapter_title": "Java Best Practices",
+            "level": "advanced",
+            "theory": "Writing clean, maintainable Java involves following conventions. Use camelCase for variables/methods, PascalCase for classes. Favor composition over inheritance. Always use curly braces.\n\nUse Optionals to handle nulls gracefully instead of returning null.",
+            "examples": [
+                {
+                    "title": "Using Optional",
+                    "code": "public Optional<User> findUser(String id) {\n    return Optional.ofNullable(db.get(id));\n}",
+                    "explanation": "Avoids NullPointerException."
+                },
+                {
+                    "title": "Lombok",
+                    "code": "@Data // Generates getters, setters, toString\npublic class User { private String name; }",
+                    "explanation": "Reduces boilerplate."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Class to avoid null checks?",
+                    "difficulty": "medium",
+                    "solution": "Optional"
+                },
+                {
+                    "question": "Standard naming convention for constants?",
+                    "difficulty": "easy",
+                    "solution": "UPPER_SNAKE_CASE"
+                }
+            ],
+            "completion_criteria": "Writes professional, enterprise-grade Java code."
+        }
+    ],
+    "quick_reference": {
+        "keywords": [
+            "public",
+            "private",
+            "protected",
+            "static",
+            "final",
+            "void",
+            "class",
+            "interface",
+            "extends",
+            "implements",
+            "new",
+            "this",
+            "super",
+            "try",
+            "catch",
+            "throw"
+        ],
+        "data_types": [
+            "byte",
+            "short",
+            "int",
+            "long",
+            "float",
+            "double",
+            "boolean",
+            "char",
+            "String",
+            "Integer",
+            "List",
+            "Map",
+            "Set"
+        ],
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "%",
+            "++",
+            "--",
+            "==",
+            "!=",
+            "&&",
+            "||",
+            "!",
+            "instanceof",
+            "? :"
+        ],
+        "common_patterns": [
+            "Singleton: One instance",
+            "Factory: Create objects",
+            "Builder: Complex objects",
+            "Observer: Event listener"
+        ]
+    }
+}

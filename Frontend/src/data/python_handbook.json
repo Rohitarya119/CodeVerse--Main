@@ -1,0 +1,768 @@
+{
+  "language": "Python",
+  "total_chapters": 24,
+  "estimated_hours": 12,
+  "chapters": [
+    {
+      "chapter_id": 1,
+      "chapter_title": "Python & Your First Program",
+      "level": "beginner",
+      "theory": "Python is a high-level, interpreted programming language known for its readability and versatility. Unlike compiled languages like C++, Python code is executed line-by-line, which makes debugging easier. It is widely used in web development, data science, AI, and automation.\n\nWriting your first program involves using the `print()` function, which outputs text to the console. Python files commonly have the extension `.py`.",
+      "examples": [
+        {
+          "title": "Hello World",
+          "code": "print('Hello, CodeVerse!')",
+          "explanation": "The print function displays the string text to the screen."
+        },
+        {
+          "title": "Simple Math",
+          "code": "print(2 + 2)",
+          "explanation": "Python can perform calculations directly within the print statement."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Write a program to print your name.",
+          "difficulty": "easy",
+          "solution": "print('My Name')"
+        },
+        {
+          "question": "Print the result of 100 divided by 5.",
+          "difficulty": "easy",
+          "solution": "print(100 / 5)"
+        }
+      ],
+      "completion_criteria": "Can execute a script that outputs text and numbers."
+    },
+    {
+      "chapter_id": 2,
+      "chapter_title": "Variables & Data Types",
+      "level": "beginner",
+      "theory": "Variables are containers for storing data values. In Python, you don't need to declare variables with a specific type; the type is inferred from the value. Variable names must start with a letter or underscore and are case-sensitive.\n\nCommon data types include Integers (`int`), Floating-point numbers (`float`), Strings (`str`), and Booleans (`bool`).",
+      "examples": [
+        {
+          "title": "Variable Assignment",
+          "code": "name = 'Alice'\nage = 25\nheight = 5.9\nis_student = True",
+          "explanation": "Assigning different types of data to variables."
+        },
+        {
+          "title": "Checking Type",
+          "code": "x = 10\nprint(type(x))",
+          "explanation": "Using type() to see that x is an integer."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a variable `pi` with value 3.14.",
+          "difficulty": "easy",
+          "solution": "pi = 3.14"
+        },
+        {
+          "question": "Check the type of the value 'True'.",
+          "difficulty": "easy",
+          "solution": "print(type('True'))"
+        }
+      ],
+      "completion_criteria": "Can create variables of different types and check their types."
+    },
+    {
+      "chapter_id": 3,
+      "chapter_title": "Input & Output",
+      "level": "beginner",
+      "theory": "Input allows a program to interact with the user, while output displays results. The `input()` function pauses program execution to wait for user text entry. The data is always read as a string.\n\nOutput is handled by `print()`, which can format strings using f-strings (formatted string literals) for embedding variables directly into text.",
+      "examples": [
+        {
+          "title": "Taking User Input",
+          "code": "name = input('Enter your name: ')\nprint('Hello ' + name)",
+          "explanation": "Captures user input and concatenates it with a greeting."
+        },
+        {
+          "title": "F-Strings",
+          "code": "score = 95\nprint(f'Your score is {score}')",
+          "explanation": "Uses an f-string to embed the integer variable into the output."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Ask the user for their age and print it.",
+          "difficulty": "easy",
+          "solution": "age = input('Age: ')\nprint(age)"
+        },
+        {
+          "question": "Take two numbers as input and print their sum (remember to convert to int).",
+          "difficulty": "medium",
+          "solution": "a = int(input())\nb = int(input())\nprint(a + b)"
+        }
+      ],
+      "completion_criteria": "Can accept user input and display formatted output."
+    },
+    {
+      "chapter_id": 4,
+      "chapter_title": "Operators & Expressions",
+      "level": "beginner",
+      "theory": "Operators perform operations on variables. Arithmetic operators (`+`, `-`, `*`, `/`, `//`, `%`, `**`) handle math. Comparison operators (`==`, `!=`, `>`, `<`) compare values and return Booleans.\n\nLogical operators (`and`, `or`, `not`) combine boolean expressions. Expressions are combinations of values and operators that evaluate to a single result.",
+      "examples": [
+        {
+          "title": "Arithmetic Operations",
+          "code": "print(10 % 3)  # Remainder (1)\nprint(2 ** 3)  # Power (8)\nprint(10 // 3) # Floor Div (3)",
+          "explanation": "Demonstrates modulus, exponentiation, and floor division."
+        },
+        {
+          "title": "Logical Operators",
+          "code": "x = 5\nprint(x > 0 and x < 10)",
+          "explanation": "Checks if x is strictly between 0 and 10."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Calculate 5 raised to the power of 3.",
+          "difficulty": "easy",
+          "solution": "print(5 ** 3)"
+        },
+        {
+          "question": "Check if 10 is equal to '10'.",
+          "difficulty": "easy",
+          "solution": "print(10 == '10')"
+        }
+      ],
+      "completion_criteria": "Can construct complex mathematical and logical expressions."
+    },
+    {
+      "chapter_id": 5,
+      "chapter_title": "Conditional Statements",
+      "level": "beginner",
+      "theory": "Conditional statements allow a program to make decisions. The `if` statement executes code only if a condition is true. `elif` (else if) checks subsequent conditions, and `else` catches anything not previously matched.\n\nIndentation is critical in Python to define the scope of these blocks.",
+      "examples": [
+        {
+          "title": "If-Elif-Else",
+          "code": "grade = 85\nif grade >= 90:\n    print('A')\nelif grade >= 80:\n    print('B')\nelse:\n    print('C')",
+          "explanation": "Checks multiple conditions to determine the grade."
+        },
+        {
+          "title": "Nested If",
+          "code": "num = 10\nif num > 0:\n    if num % 2 == 0:\n        print('Positive Even')",
+          "explanation": "Conditions inside conditions."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Write an if statement to check if a number is negative.",
+          "difficulty": "easy",
+          "solution": "x = -5\nif x < 0:\n    print('Negative')"
+        },
+        {
+          "question": "Check if a number is divisible by both 3 and 5.",
+          "difficulty": "medium",
+          "solution": "n = 15\nif n % 3 == 0 and n % 5 == 0:\n    print('Divisible')"
+        }
+      ],
+      "completion_criteria": "Can write logic to branch program flow based on conditions."
+    },
+    {
+      "chapter_id": 6,
+      "chapter_title": "Loops (for & while)",
+      "level": "beginner",
+      "theory": "Loops allow code to be repeated. `for` loops are used to iterate over a sequence (like a list or range of numbers). `while` loops repeat as long as a condition remains true.\n\nThe `break` statement exits a loop early, while `continue` skips the rest of the current iteration and jumps to the next one.",
+      "examples": [
+        {
+          "title": "For Loop with Range",
+          "code": "for i in range(5):\n    print(i)",
+          "explanation": "Prints numbers 0 through 4."
+        },
+        {
+          "title": "While Loop",
+          "code": "count = 3\nwhile count > 0:\n    print(count)\n    count -= 1",
+          "explanation": "Counts down from 3 to 1."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Print all even numbers from 0 to 10 using a for loop.",
+          "difficulty": "easy",
+          "solution": "for i in range(0, 11, 2):\n    print(i)"
+        },
+        {
+          "question": "Use a while loop to print powers of 2 less than 20.",
+          "difficulty": "medium",
+          "solution": "n = 1\nwhile n < 20:\n    print(n)\n    n *= 2"
+        }
+      ],
+      "completion_criteria": "Can control repeated execution using different loop structures."
+    },
+    {
+      "chapter_id": 7,
+      "chapter_title": "Functions Basics",
+      "level": "beginner",
+      "theory": "Functions are reusable blocks of code defined with the `def` keyword. They can accept input parameters and return values. This promotes modularity and reduces code duplication.\n\nVariables created inside a function are local to that function, while variables defined outside are global.",
+      "examples": [
+        {
+          "title": "Simple Function",
+          "code": "def greet(name):\n    return f'Hello {name}'\n\nprint(greet('John'))",
+          "explanation": "Defines a function taking one argument."
+        },
+        {
+          "title": "Return Value",
+          "code": "def add(a, b):\n    return a + b\n\nres = add(3, 4)",
+          "explanation": "Function returns a result that is stored in a variable."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Write a function `square(n)` that returns the square of n.",
+          "difficulty": "easy",
+          "solution": "def square(n):\n    return n * n"
+        },
+        {
+          "question": "Write a function that takes a name and prints a welcome message.",
+          "difficulty": "easy",
+          "solution": "def welcome(name):\n    print(f'Welcome {name}')"
+        }
+      ],
+      "completion_criteria": "Can define and call functions with arguments and return values."
+    },
+    {
+      "chapter_id": 8,
+      "chapter_title": "Lists & Tuples",
+      "level": "beginner",
+      "theory": "Lists are ordered, mutable collections of items. You can add, remove, and change elements. Tuples are ordered but immutable; once created, they cannot be changed.\n\nLists are defined with `[]` and Tuples with `()`. Indexing starts at 0, and negative indexing allows access from the end.",
+      "examples": [
+        {
+          "title": "List Operations",
+          "code": "fruits = ['apple', 'banana']\nfruits.append('cherry')\nprint(fruits[0])  # apple",
+          "explanation": "Creating, appending to, and accessing a list."
+        },
+        {
+          "title": "Tuple Immutability",
+          "code": "coords = (10, 20)\n# coords[0] = 5  # This would raise an error",
+          "explanation": "Tuples are read-only."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a list of 3 colors and add a 4th one.",
+          "difficulty": "easy",
+          "solution": "c = ['red', 'blue', 'green']\nc.append('yellow')"
+        },
+        {
+          "question": "Access the last element of the list `nums = [1, 2, 3]`.",
+          "difficulty": "easy",
+          "solution": "nums = [1, 2, 3]\nprint(nums[-1])"
+        }
+      ],
+      "completion_criteria": "Understands differences between mutable and immutable sequences."
+    },
+    {
+      "chapter_id": 9,
+      "chapter_title": "Strings in Depth",
+      "level": "intermediate",
+      "theory": "Strings are sequences of characters. Python provides powerful methods to manipulate strings, such as `split()`, `join()`, `strip()`, and slicing `[start:end]`. Strings are immutable, meaning method calls return new strings rather than changing the original.\n\nSlicing allows for extracting substrings efficiently.",
+      "examples": [
+        {
+          "title": "String Methods",
+          "code": "text = '  Python  '\nprint(text.strip().upper())",
+          "explanation": "Removes whitespace and converts to uppercase."
+        },
+        {
+          "title": "Slicing",
+          "code": "s = 'Hello World'\nprint(s[0:5])  # Hello\nprint(s[::-1]) # dlroW olleH (Reverse)",
+          "explanation": "Extracting substrings and reversing."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Reverse the string 'CodeVerse'.",
+          "difficulty": "medium",
+          "solution": "s = 'CodeVerse'\nprint(s[::-1])"
+        },
+        {
+          "question": "Convert 'apple,banana,cherry' into a list of words.",
+          "difficulty": "medium",
+          "solution": "s = 'apple,banana,cherry'\nprint(s.split(','))"
+        }
+      ],
+      "completion_criteria": "Can manipulate text data using built-in methods and slicing."
+    },
+    {
+      "chapter_id": 10,
+      "chapter_title": "Sets & Dictionaries",
+      "level": "intermediate",
+      "theory": "Dictionaries rely on key-value pairs for fast data lookups. They are mutable and keys must be unique. Sets are unordered collections of unique elements, useful for membership testing and eliminating duplicates.\n\nBoth leverage hashing for efficient O(1) average time complexity for lookups.",
+      "examples": [
+        {
+          "title": "Dictionary Usage",
+          "code": "user = {'name': 'Alice', 'age': 30}\nprint(user['name'])\nuser['city'] = 'Paris'",
+          "explanation": "Accessing and adding data to a dictionary."
+        },
+        {
+          "title": "Set Operations",
+          "code": "s = {1, 2, 3, 3}\nprint(s)  # {1, 2, 3}\nprint(1 in s)  # True",
+          "explanation": "Validating uniqueness and membership."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a dictionary with keys 'a' and 'b' and values 1 and 2.",
+          "difficulty": "easy",
+          "solution": "d = {'a': 1, 'b': 2}"
+        },
+        {
+          "question": "Remove duplicates from the list `[1, 2, 2, 3]` using a set.",
+          "difficulty": "medium",
+          "solution": "items = [1, 2, 2, 3]\nunique = list(set(items))"
+        }
+      ],
+      "completion_criteria": "Can model data with key-value pairs and handle unique collections."
+    },
+    {
+      "chapter_id": 11,
+      "chapter_title": "List Comprehensions",
+      "level": "intermediate",
+      "theory": "List comprehensions provide a concise way to create lists. They consist of brackets containing an expression followed by a `for` clause, then zero or more `for` or `if` clauses. They are often more readable and faster than standard for loops for creating lists.",
+      "examples": [
+        {
+          "title": "Basic Comprehension",
+          "code": "squares = [x**2 for x in range(10)]\nprint(squares)",
+          "explanation": "Generates a list of squares in one line."
+        },
+        {
+          "title": "With Condition",
+          "code": "evens = [x for x in range(10) if x % 2 == 0]",
+          "explanation": "Filters elements during creation."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a list of cubes for numbers 0-4 using comprehension.",
+          "difficulty": "medium",
+          "solution": "[x**3 for x in range(5)]"
+        },
+        {
+          "question": "Filter strings with length > 3 from `['hi', 'hello']`.",
+          "difficulty": "medium",
+          "solution": "[s for s in ['hi', 'hello'] if len(s) > 3]"
+        }
+      ],
+      "completion_criteria": "Can write concise, functional-style list transformations."
+    },
+    {
+      "chapter_id": 12,
+      "chapter_title": "Functions - Advanced",
+      "level": "intermediate",
+      "theory": "Advanced functions topics include `*args` and `**kwargs` for variable numbers of arguments. Lambda functions are small anonymous functions. Scope (LEGB rule) determines where variables are visible.\n\nFunctions are first-class citizens in Python, meaning they can be passed as arguments to other functions.",
+      "examples": [
+        {
+          "title": "Args and Kwargs",
+          "code": "def func(*args): \n    return sum(args)\nprint(func(1, 2, 3))",
+          "explanation": "Accepts any number of positional arguments."
+        },
+        {
+          "title": "Lambda Function",
+          "code": "add = lambda x, y: x + y\nprint(add(5, 3))",
+          "explanation": "A concise anonymous function."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Write a lambda that returns True if a number is even.",
+          "difficulty": "medium",
+          "solution": "is_even = lambda x: x % 2 == 0"
+        },
+        {
+          "question": "Create a function accepting any number of arguments and printing them.",
+          "difficulty": "medium",
+          "solution": "def print_all(*args): print(args)"
+        }
+      ],
+      "completion_criteria": "Can implement flexible functions with variable arguments."
+    },
+    {
+      "chapter_id": 13,
+      "chapter_title": "Modules & Packages",
+      "level": "intermediate",
+      "theory": "Modules are files containing Python code. Packages are directories containing modules and an `__init__.py` file. Importing allows code reuse across files. The `import` statement or `from ... import ...` constructs are used to bring functionality into the current namespace.\n\nPython's standard library is vast ('batteries included').",
+      "examples": [
+        {
+          "title": "Importing Module",
+          "code": "import math\nprint(math.sqrt(25))",
+          "explanation": "Using the built-in math module."
+        },
+        {
+          "title": "Specific Import",
+          "code": "from random import choice\nprint(choice(['a', 'b']))",
+          "explanation": "Importing only what is needed."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Import `datetime` and print the current date.",
+          "difficulty": "easy",
+          "solution": "import datetime\nprint(datetime.date.today())"
+        },
+        {
+          "question": "Import `randint` from `random` and generate a number between 1 and 10.",
+          "difficulty": "easy",
+          "solution": "from random import randint\nprint(randint(1, 10))"
+        }
+      ],
+      "completion_criteria": "Can organize code into files and utilize the standard library."
+    },
+    {
+      "chapter_id": 14,
+      "chapter_title": "File Handling",
+      "level": "intermediate",
+      "theory": "Reading and writing files is essential for data persistence. The `open()` function returns a file object. It is best practice to use the `with` statement (context manager) to ensure files are automatically closed after operations, preventing resource leaks.\n\nModes include 'r' (read), 'w' (write), and 'a' (append).",
+      "examples": [
+        {
+          "title": "Writing to File",
+          "code": "with open('data.txt', 'w') as f:\n    f.write('Hello')",
+          "explanation": "Opens file safely and writes text."
+        },
+        {
+          "title": "Reading File",
+          "code": "with open('data.txt', 'r') as f:\n    print(f.read())",
+          "explanation": "Reads entire file content."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Write the string 'Python' to 'test.txt'.",
+          "difficulty": "easy",
+          "solution": "with open('test.txt', 'w') as f: f.write('Python')"
+        },
+        {
+          "question": "Read the first line of 'test.txt'.",
+          "difficulty": "medium",
+          "solution": "with open('test.txt', 'r') as f: print(f.readline())"
+        }
+      ],
+      "completion_criteria": "Can persist data to disk safely using context managers."
+    },
+    {
+      "chapter_id": 15,
+      "chapter_title": "Error Handling",
+      "level": "intermediate",
+      "theory": "Exceptions are errors detected during execution. `try` and `except` blocks prevent crashes by handling these errors. The `finally` block executes code regardless of whether an error occurred (often used for cleanup).\n\nYou can also raise custom exceptions using `raise`.",
+      "examples": [
+        {
+          "title": "Handling Zero Division",
+          "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')",
+          "explanation": "Catches a specific error type."
+        },
+        {
+          "title": "Finally Block",
+          "code": "try:\n    f = open('file.txt')\nfinally:\n    print('Execution finished')",
+          "explanation": "Ensures code runs even if error occurs."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Handle a ValueError when converting 'abc' to int.",
+          "difficulty": "easy",
+          "solution": "try:\n int('abc')\nexcept ValueError:\n print('Error')"
+        },
+        {
+          "question": "Write a try-except-else block.",
+          "difficulty": "medium",
+          "solution": "try:\n x=1\nexcept:\n pass\nelse:\n print('Success')"
+        }
+      ],
+      "completion_criteria": "Can write robust code that anticipates and handles runtime errors."
+    },
+    {
+      "chapter_id": 16,
+      "chapter_title": "Debugging Techniques",
+      "level": "intermediate",
+      "theory": "Debugging is the process of finding and resolving bugs. While `print()` debugging is common, Python provides the `pdb` module for interactive debugging. Understanding stack traces is crucial for locating the source of errors.\n\nAssertions (`assert`) can also be used to verify assumptions during development.",
+      "examples": [
+        {
+          "title": "Using Assert",
+          "code": "def divide(a, b):\n    assert b != 0, 'Divisor cannot be zero'\n    return a / b",
+          "explanation": "Raises an error if the condition is False."
+        },
+        {
+          "title": "Simple Inspect",
+          "code": "val = 5\nprint(f'Debug: val={val}')",
+          "explanation": "Basic inspection of state."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Assert that x is positive.",
+          "difficulty": "easy",
+          "solution": "x = 10\nassert x > 0"
+        },
+        {
+          "question": "Write a function that asserts input is an integer.",
+          "difficulty": "medium",
+          "solution": "def check(n): assert isinstance(n, int)"
+        }
+      ],
+      "completion_criteria": "Can diagnose issues using assertions and stack trace analysis."
+    },
+    {
+      "chapter_id": 17,
+      "chapter_title": "Object-Oriented Programming",
+      "level": "advanced",
+      "theory": "OOP models real-world entities using Classes and Objects. A Class is a blueprint; an Object is an instance of that class. `__init__` is the constructor method used to initialize attributes.\n\nOOP principles include Encapsulation (hiding data) and Abstraction (simplifying usage).",
+      "examples": [
+        {
+          "title": "Class Definition",
+          "code": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    def bark(self):\n        return 'Woof!'",
+          "explanation": "Defining a class with data and behavior."
+        },
+        {
+          "title": "Creating Objects",
+          "code": "d = Dog('Buddy')\nprint(d.name)",
+          "explanation": "Instantiating a class."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a `Car` class with a `color` attribute.",
+          "difficulty": "easy",
+          "solution": "class Car:\n def __init__(self, c):\n  self.color = c"
+        },
+        {
+          "question": "Add a method `drive` to `Car` that prints 'Vroom'.",
+          "difficulty": "medium",
+          "solution": "class Car:\n def drive(self): print('Vroom')"
+        }
+      ],
+      "completion_criteria": "Can design code using classes, attributes, and methods."
+    },
+    {
+      "chapter_id": 18,
+      "chapter_title": "OOP - Inheritance & Polymorphism",
+      "level": "advanced",
+      "theory": "Inheritance allows a class (Child) to acquire properties from another class (Parent). Polymorphism allows different classes to share the same method name but have different implementations.\n\n`super()` is used to call methods from the parent class.",
+      "examples": [
+        {
+          "title": "Inheritance",
+          "code": "class Animal:\n    def speak(self): pass\nclass Cat(Animal):\n    def speak(self): return 'Meow'",
+          "explanation": "Cat inherits from Animal but overrides speak."
+        },
+        {
+          "title": "Using Super",
+          "code": "class A:\n def __init__(self): print('A')\nclass B(A):\n def __init__(self): \n  super().__init__()\n  print('B')",
+          "explanation": "Calls parent constructor."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a class `Bird` inheriting from `Animal`.",
+          "difficulty": "easy",
+          "solution": "class Bird(Animal): pass"
+        },
+        {
+          "question": "Override `__str__` to return 'Custom Object'.",
+          "difficulty": "medium",
+          "solution": "class Obj:\n def __str__(self): return 'Custom Object'"
+        }
+      ],
+      "completion_criteria": "Can structure complex systems using class hierarchies."
+    },
+    {
+      "chapter_id": 19,
+      "chapter_title": "Python Memory Model",
+      "level": "advanced",
+      "theory": "In Python, variables are references to objects in memory, not boxes containing data. Mutable objects (lists, dicts) can be changed in place, while immutable objects (ints, strings) cannot.\n\nUnderstanding `id()` and the difference between `is` (identity) and `==` (equality) is key to avoiding bugs.",
+      "examples": [
+        {
+          "title": "Reference vs Value",
+          "code": "a = [1, 2]\nb = a\nb.append(3)\nprint(a)  # [1, 2, 3]",
+          "explanation": "b references the same object as a."
+        },
+        {
+          "title": "Identity Check",
+          "code": "x = []\ny = []\nprint(x is y)  # False",
+          "explanation": "They are equal values but different objects."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Check if two separate lists with content `[1]` are identical objects.",
+          "difficulty": "medium",
+          "solution": "a=[1]; b=[1]; print(a is b)"
+        },
+        {
+          "question": "Verify if variables a and b point to same object.",
+          "difficulty": "easy",
+          "solution": "print(a is b)"
+        }
+      ],
+      "completion_criteria": "Understands references, mutability, and object identity."
+    },
+    {
+      "chapter_id": 20,
+      "chapter_title": "Iterators & Generators",
+      "level": "advanced",
+      "theory": "Iterators are objects that can be iterated upon (implement `__iter__` and `__next__`). Generators are a simple way to create iterators using functions and the `yield` keyword. Generators save memory by yielding items one at a time associated with the current state, rather than creating a whole list in memory.",
+      "examples": [
+        {
+          "title": "Generator Function",
+          "code": "def count_up(n):\n    i = 0\n    while i < n:\n        yield i\n        i += 1",
+          "explanation": "Yields values lazily."
+        },
+        {
+          "title": "Generator Expression",
+          "code": "gen = (x*x for x in range(5))\nprint(next(gen))",
+          "explanation": "Like list comprehension but with () for lazy eval."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Create a generator that yields 'A', then 'B', then 'C'.",
+          "difficulty": "medium",
+          "solution": "def abc(): yield 'A'; yield 'B'; yield 'C'"
+        },
+        {
+          "question": "Use `next()` to get the first item from a generator `g`.",
+          "difficulty": "easy",
+          "solution": "print(next(g))"
+        }
+      ],
+      "completion_criteria": "Can create memory-efficient data pipelines using generators."
+    },
+    {
+      "chapter_id": 21,
+      "chapter_title": "Decorators",
+      "level": "advanced",
+      "theory": "Decorators are functions that modify the behavior of other functions. They take a function as input and return a new function (wrapper). They are denoted with the `@name` syntax.\n\nCommon uses include logging, timing execution, or access control.",
+      "examples": [
+        {
+          "title": "Simple Decorator",
+          "code": "def my_decor(func):\n    def wrapper():\n        print('Before')\n        func()\n    return wrapper",
+          "explanation": "Wraps execution with print statements."
+        },
+        {
+          "title": "Using @Syntax",
+          "code": "@my_decor\ndef hello():\n    print('Hello')",
+          "explanation": "Applies the decorator to the function."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Write a decorator that simply executes the function it wraps.",
+          "difficulty": "medium",
+          "solution": "def d(f): \n def w(): f()\n return w"
+        },
+        {
+          "question": "Apply decorator `log` to function `run`.",
+          "difficulty": "easy",
+          "solution": "@log\ndef run(): pass"
+        }
+      ],
+      "completion_criteria": "Can implement and use decorators to extend function behavior."
+    },
+    {
+      "chapter_id": 22,
+      "chapter_title": "Time & Space Complexity",
+      "level": "advanced",
+      "theory": "Big O notation describes the performance of an algorithm. Time complexity measures speed relative to input size (e.g., O(n) vs O(n^2)). Space complexity measures memory usage.\n\nUnderstanding complexity is crucial for writing efficient code and for technical interviews.",
+      "examples": [
+        {
+          "title": "O(1) vs O(n)",
+          "code": "# O(1)\nitem = arr[0]\n\n# O(n)\nfor x in arr:\n    print(x)",
+          "explanation": "Constant access vs linear iteration."
+        },
+        {
+          "title": "O(n^2)",
+          "code": "for i in range(n):\n    for j in range(n):\n        print(i, j)",
+          "explanation": "Nested loops usually imply quadratic complexity."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "What is the complexity of accessing a dictionary key?",
+          "difficulty": "medium",
+          "solution": "O(1) on average"
+        },
+        {
+          "question": "What is the complexity of binary search?",
+          "difficulty": "medium",
+          "solution": "O(log n)"
+        }
+      ],
+      "completion_criteria": "Can analyze code performance using Big O notation."
+    },
+    {
+      "chapter_id": 23,
+      "chapter_title": "Common Python Interview Patterns",
+      "level": "advanced",
+      "theory": "Interviews often focus on specific patterns like sliding windows, two pointers, or hashmaps. Knowing when to use `collections.Counter`, `defaultdict`, or sorting tricks can simplify solutions significantly.\n\nEfficient manipulation of strings and arrays is a staple of these problems.",
+      "examples": [
+        {
+          "title": "Counter",
+          "code": "from collections import Counter\nc = Counter('banana')\nprint(c['a'])  # 3",
+          "explanation": "Counts frequency of elements efficiently."
+        },
+        {
+          "title": "Swapping Values",
+          "code": "a, b = 1, 2\na, b = b, a",
+          "explanation": "Pythonic swap without temp variable."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "Count character frequencies in 'hello' using Counter.",
+          "difficulty": "easy",
+          "solution": "from collections import Counter\nprint(Counter('hello'))"
+        },
+        {
+          "question": "Reverse a list `l` in-place.",
+          "difficulty": "easy",
+          "solution": "l.reverse()"
+        }
+      ],
+      "completion_criteria": "Can apply standard library tools to solve algorithmic problems efficiently."
+    },
+    {
+      "chapter_id": 24,
+      "chapter_title": "Python Best Practices",
+      "level": "advanced",
+      "theory": "PEP 8 is the style guide for Python code. Best practices include using meaningful variable names, proper indentation (4 spaces), and using `docstrings` for documentation. 'Pythonic' code exploits the language's features for readability and brevity.\n\nAvoid using global variables and prefer explicit imports.",
+      "examples": [
+        {
+          "title": "Docstrings",
+          "code": "def calc(x):\n    \"\"\"Calculates square of x.\"\"\"\n    return x*x",
+          "explanation": "Documenting function purpose."
+        },
+        {
+          "title": "Unpacking",
+          "code": "coords = (1, 2)\nx, y = coords",
+          "explanation": "Cleaner than x=coords[0]; y=coords[1]."
+        }
+      ],
+      "exercises": [
+        {
+          "question": "What is the standard indentation in Python?",
+          "difficulty": "easy",
+          "solution": "4 spaces"
+        },
+        {
+          "question": "Rewrite `x = x + 1` using an augmented assignment operator.",
+          "difficulty": "easy",
+          "solution": "x += 1"
+        }
+      ],
+      "completion_criteria": "Writes clean, readable, and standard-compliant Python code."
+    }
+  ],
+  "quick_reference": {
+    "keywords": [
+      "if", "else", "elif", "while", "for", "def", "class", "try", "except", "import", "from", "return", "yield"
+    ],
+    "data_types": [
+      "int", "float", "str", "bool", "list", "dict", "set", "tuple", "None"
+    ],
+    "operators": [
+      "+", "-", "*", "/", "//", "%", "**", "==", "!=", "<", ">", "and", "or", "not", "is", "in"
+    ],
+    "common_patterns": [
+      "List Comprehension: [x for x in list]",
+      "Context Manager: with open() as f:",
+      "Generator: (x for x in list)",
+      "Lambda: lambda x: x+1"
+    ]
+  }
+}

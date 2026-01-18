@@ -1,0 +1,747 @@
+{
+    "language": "JavaScript",
+    "version": "1.0.0",
+    "total_chapters": 22,
+    "estimated_hours": 11,
+    "chapters": [
+        {
+            "chapter_id": 1,
+            "chapter_title": "Introduction to JavaScript & Use Cases",
+            "level": "beginner",
+            "theory": "JavaScript (JS) is a high-level, interpreted programming language primarily known as the scripting language for Web pages. It enables interactive web pages and is an essential part of web applications. Beyond the browser, JS is used in servers (Node.js), mobile apps (React Native), and desktop apps (Electron).\n\nJavaScript is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It is dynamically typed and follows the ECMAScript specification.",
+            "examples": [
+                {
+                    "title": "Use in HTML",
+                    "code": "<script>\n  console.log(\"Hello from Script tag\");\n</script>",
+                    "explanation": "Embedded JS in HTML."
+                },
+                {
+                    "title": "Console Output",
+                    "code": "console.log(\"JS is running\");",
+                    "explanation": "Standard debugging output."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the standard specification for JavaScript?",
+                    "difficulty": "easy",
+                    "solution": "ECMAScript"
+                },
+                {
+                    "question": "Which environment allows JS to run on servers?",
+                    "difficulty": "easy",
+                    "solution": "Node.js"
+                }
+            ],
+            "completion_criteria": "Understands the role and versatility of JavaScript in modern development."
+        },
+        {
+            "chapter_id": 2,
+            "chapter_title": "JavaScript Setup & Execution",
+            "level": "beginner",
+            "theory": "JavaScript can be executed directly in the browser console, embedded in HTML files, or run via Node.js. In a typical HTML setup, the `<script>` tag is placed at the end of the `<body>` to ensure the DOM is loaded before execution.\n\nExternal scripts are linked using the `src` attribute of the script tag, promoting separation of concerns.",
+            "examples": [
+                {
+                    "title": "External Script",
+                    "code": "<script src=\"app.js\"></script>",
+                    "explanation": "Linking an external JS file."
+                },
+                {
+                    "title": "Node.js Execution",
+                    "code": "// In terminal:\n// node app.js",
+                    "explanation": "Running JS file via Node."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which HTML tag is used to include JavaScript?",
+                    "difficulty": "easy",
+                    "solution": "<script>"
+                },
+                {
+                    "question": "Where is the best place to put the script tag in HTML for performance?",
+                    "difficulty": "medium",
+                    "solution": "Bottom of body"
+                }
+            ],
+            "completion_criteria": "Can integrate and execute JavaScript in both browser and server environments."
+        },
+        {
+            "chapter_id": 3,
+            "chapter_title": "Variables & Data Types",
+            "level": "beginner",
+            "theory": "Variables are containers for data. Modern JS uses `let` (block scoped, reassignable) and `const` (block scoped, constant reference). `var` is function-scoped and generally avoided in modern code.\n\nData types include Primitives (`String`, `Number`, `Boolean`, `Null`, `Undefined`, `Symbol`, `BigInt`) and Objects.",
+            "examples": [
+                {
+                    "title": "Declaration",
+                    "code": "let count = 10;\nconst PI = 3.14;\nvar old = \"Avoid\";",
+                    "explanation": "Defining variables."
+                },
+                {
+                    "title": "Types",
+                    "code": "let isHappy = true;\nlet name = \"JS\";\nlet empty = null;",
+                    "explanation": "Different primitive types."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which keyword declares a constant variable?",
+                    "difficulty": "easy",
+                    "solution": "const"
+                },
+                {
+                    "question": "What is the type of a variable that has been declared but not assigned?",
+                    "difficulty": "medium",
+                    "solution": "undefined"
+                }
+            ],
+            "completion_criteria": "Can properly declare variables and identify data types."
+        },
+        {
+            "chapter_id": 4,
+            "chapter_title": "Operators & Expressions",
+            "level": "beginner",
+            "theory": "JavaScript supports arithmetic (`+`, `-`, `*`, `/`, `%`, `**`), assignment (`=`, `+=`), comparison (`==`, `===`, `!=`, `!==`, `>`, `<`), and logical (`&&`, `||`, `!`) operators. The strict equality operator `===` checks both value and type, preventing unwanted type coercion.\n\nThe ternary operator (`condition ? true : false`) provides a concise conditional expression.",
+            "examples": [
+                {
+                    "title": "Strict Equality",
+                    "code": "5 == \"5\"; // true\n5 === \"5\"; // false",
+                    "explanation": "Coercion vs Strict check."
+                },
+                {
+                    "title": "Ternary",
+                    "code": "let status = age >= 18 ? \"Adult\" : \"Minor\";",
+                    "explanation": "Conditional assignment."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What does `===` check?",
+                    "difficulty": "easy",
+                    "solution": "Value and Type"
+                },
+                {
+                    "question": "Result of `'5' + 5`?",
+                    "difficulty": "medium",
+                    "solution": "\"55\" (Concatenation)"
+                }
+            ],
+            "completion_criteria": "Can construct expressions using strict operators to avoid common pitfalls."
+        },
+        {
+            "chapter_id": 5,
+            "chapter_title": "Conditional Statements",
+            "level": "beginner",
+            "theory": "Conditional logic dictates program flow. `if`, `else if`, and `else` blocks execute code based on boolean conditions. The `switch` statement selects a code block based on matching cases.\n\nFalsy values in JS include `false`, `0`, `\"\"`, `null`, `undefined`, and `NaN`.",
+            "examples": [
+                {
+                    "title": "If-Else",
+                    "code": "if (score > 50) {\n  console.log(\"Pass\");\n} else {\n  console.log(\"Fail\");\n}",
+                    "explanation": "Basic branching."
+                },
+                {
+                    "title": "Switch",
+                    "code": "switch(role) {\n  case 'admin': access = true; break;\n  default: access = false;\n}",
+                    "explanation": "Multi-way branching."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Is an empty string `\"\"` truthy or falsy?",
+                    "difficulty": "easy",
+                    "solution": "falsy"
+                },
+                {
+                    "question": "Keyword to stop fall-through in switch?",
+                    "difficulty": "easy",
+                    "solution": "break"
+                }
+            ],
+            "completion_criteria": "Can control program flow based on dynamic conditions."
+        },
+        {
+            "chapter_id": 6,
+            "chapter_title": "Loops",
+            "level": "beginner",
+            "theory": "Loops repeat a block of code. `for` loops are standard for definite iteration. `while` and `do-while` loops run based on conditions. The `for...of` loop is used to iterate over iterable objects like arrays.\n\n`break` exits the loop entirely, while `continue` skips to the next iteration.",
+            "examples": [
+                {
+                    "title": "For Loop",
+                    "code": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}",
+                    "explanation": "Standard iteration."
+                },
+                {
+                    "title": "For...Of",
+                    "code": "const arr = [10, 20];\nfor (const val of arr) {\n  console.log(val);\n}",
+                    "explanation": "Iterating values."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which loop is best for iterating array values?",
+                    "difficulty": "medium",
+                    "solution": "for...of"
+                },
+                {
+                    "question": "Loop that guarantees at least one execution?",
+                    "difficulty": "easy",
+                    "solution": "do-while"
+                }
+            ],
+            "completion_criteria": "Can automate repetitive tasks using various loop structures."
+        },
+        {
+            "chapter_id": 7,
+            "chapter_title": "Functions & Scope",
+            "level": "beginner",
+            "theory": "Functions are reusable blocks of code. They can be function declarations or expressions. ES6 introduced Arrow Functions (`=>`) which provide a shorter syntax.\n\nScope determines variable visibility: Global, Function, and Block scope (`let`/`const`).",
+            "examples": [
+                {
+                    "title": "Arrow Function",
+                    "code": "const add = (a, b) => a + b;\nconsole.log(add(2, 3));",
+                    "explanation": "Concise function syntax."
+                },
+                {
+                    "title": "Scope",
+                    "code": "function test() {\n  let local = \"Hidden\";\n}\n// console.log(local); // Error",
+                    "explanation": "Variable is private to function."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Define a function `greet` taking `name`.",
+                    "difficulty": "easy",
+                    "solution": "function greet(name) {}"
+                },
+                {
+                    "question": "Are variables defined with `let` inside an `if` block accessible outside?",
+                    "difficulty": "medium",
+                    "solution": "No (Block Scope)"
+                }
+            ],
+            "completion_criteria": "Can define modular functions and manage data visibility."
+        },
+        {
+            "chapter_id": 8,
+            "chapter_title": "Arrays",
+            "level": "beginner",
+            "theory": "Arrays are ordered lists of values, potentially of mixed types. They are zero-indexed objects. Key properties include `.length`. Common operations involve accessing `[i]` and modifying elements.\n\nArrays in JS are dynamic and can grow or shrink automatically.",
+            "examples": [
+                {
+                    "title": "Creation",
+                    "code": "const colors = [\"Red\", \"Blue\"];\nconsole.log(colors[0]);",
+                    "explanation": "Array literal."
+                },
+                {
+                    "title": "Modification",
+                    "code": "colors.push(\"Green\"); // Adds to end\ncolors.pop(); // Removes last",
+                    "explanation": "Basic stack operations."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Method to add element to the end of an array?",
+                    "difficulty": "easy",
+                    "solution": "push"
+                },
+                {
+                    "question": "Property to get the number of elements?",
+                    "difficulty": "easy",
+                    "solution": "length"
+                }
+            ],
+            "completion_criteria": "Can store and manipulate lists of data using arrays."
+        },
+        {
+            "chapter_id": 9,
+            "chapter_title": "Objects",
+            "level": "beginner",
+            "theory": "Objects are collections of key-value pairs. Keys are strings (or Symbols), and values can be any type. Values are accessed via dot notation `obj.key` or bracket notation `obj['key']`.\n\nObject literals `{}` are the primary way to create objects.",
+            "examples": [
+                {
+                    "title": "Object Literal",
+                    "code": "const user = {\n  name: \"Alice\",\n  age: 25\n};\nuser.email = \"a@b.com\";",
+                    "explanation": "Creating and extending objects."
+                },
+                {
+                    "title": "Access",
+                    "code": "console.log(user.name);\nconsole.log(user[\"age\"]);",
+                    "explanation": "Dot and Bracket notation."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Notation to access property with a variable key?",
+                    "difficulty": "medium",
+                    "solution": "Bracket notation []"
+                },
+                {
+                    "question": "Delete property `age` from object `user`.",
+                    "difficulty": "medium",
+                    "solution": "delete user.age"
+                }
+            ],
+            "completion_criteria": "Can model real-world entities using JavaScript objects."
+        },
+        {
+            "chapter_id": 10,
+            "chapter_title": "Strings & Methods",
+            "level": "intermediate",
+            "theory": "Strings are immutable sequences of characters. Template Literals (backticks ``) allow embedded expressions (`${var}`). Useful methods include `.slice()`, `.split()`, `.includes()`, and `.replace()`.\n\nStrings behave like arrays of characters for read access.",
+            "examples": [
+                {
+                    "title": "Template Literal",
+                    "code": "const name = \"Bob\";\nconst msg = `Hello, ${name}!`;",
+                    "explanation": "String interpolation."
+                },
+                {
+                    "title": "Methods",
+                    "code": "const str = \"JavaScript\";\nconsole.log(str.slice(0, 4)); // \"Java\"",
+                    "explanation": "Extracting substrings."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Method to split string into array by delimiter?",
+                    "difficulty": "easy",
+                    "solution": "split()"
+                },
+                {
+                    "question": "Syntax for string interpolation?",
+                    "difficulty": "easy",
+                    "solution": "${expression}"
+                }
+            ],
+            "completion_criteria": "Can manipulate text efficiently using modern string features."
+        },
+        {
+            "chapter_id": 11,
+            "chapter_title": "Array Methods",
+            "level": "intermediate",
+            "theory": "Higher-order array methods are essential for functional programming. `.map()` transforms elements, `.filter()` selects elements, and `.reduce()` accumulates a single result.\n\nOther notable methods: `.find()`, `.some()`, `.every()`, and `.sort()`.",
+            "examples": [
+                {
+                    "title": "Map & Filter",
+                    "code": "const nums = [1, 2, 3, 4];\nconst evens = nums.filter(n => n % 2 === 0);\nconst doubled = nums.map(n => n * 2);",
+                    "explanation": "Functional transformations."
+                },
+                {
+                    "title": "Reduce",
+                    "code": "const sum = nums.reduce((acc, cur) => acc + cur, 0);",
+                    "explanation": "Aggregation."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Method to create a new array with transformed elements?",
+                    "difficulty": "medium",
+                    "solution": "map"
+                },
+                {
+                    "question": "Method to find the first matching element?",
+                    "difficulty": "medium",
+                    "solution": "find"
+                }
+            ],
+            "completion_criteria": "Can process data collections using functional array methods."
+        },
+        {
+            "chapter_id": 12,
+            "chapter_title": "Functions - Advanced",
+            "level": "intermediate",
+            "theory": "Key concepts include default parameters, rest parameters (`...args`), and the `this` keyword context. `this` refers to the execution context; arrow functions lexically bind `this` (inherit from parent).\n\nImmediately Invoked Function Expressions (IIFE) run immediately after definition.",
+            "examples": [
+                {
+                    "title": "Default & Rest",
+                    "code": "function sum(base = 0, ...nums) {\n  return base + nums.reduce((a,b) => a+b, 0);\n}",
+                    "explanation": "Flexible arguments."
+                },
+                {
+                    "title": "Arrow `this`",
+                    "code": "const obj = {\n  val: 10,\n  print: () => console.log(this.val) // undefined in global\n};",
+                    "explanation": "Lexical scoping warning."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Operator to gather remaining arguments into an array?",
+                    "difficulty": "medium",
+                    "solution": "Rest operator (...)"
+                },
+                {
+                    "question": "Do arrow functions have their own `this`?",
+                    "difficulty": "medium",
+                    "solution": "No"
+                }
+            ],
+            "completion_criteria": "Understands advanced function mechanics and context binding."
+        },
+        {
+            "chapter_id": 13,
+            "chapter_title": "ES6 Features",
+            "level": "intermediate",
+            "theory": "ES6+ introduced massive quality-of-life improvements. Destructuring allows unpacking arrays/objects into variables. The Spread operator (`...`) expands iterables. Enhanced Object Literals simplify object creation.\n\n`let` and `const` replaced `var` as standard.",
+            "examples": [
+                {
+                    "title": "Destructuring",
+                    "code": "const [x, y] = [1, 2];\nconst { name } = { name: \"Alice\", age: 30 };",
+                    "explanation": "Unpacking values."
+                },
+                {
+                    "title": "Spread",
+                    "code": "const arr1 = [1, 2];\nconst arr2 = [...arr1, 3, 4];",
+                    "explanation": "Merging arrays."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Extract property `id` from object `user` into a variable.",
+                    "difficulty": "easy",
+                    "solution": "const { id } = user;"
+                },
+                {
+                    "question": "Operator to expand an array into individual elements?",
+                    "difficulty": "easy",
+                    "solution": "Spread (...)"
+                }
+            ],
+            "completion_criteria": "Writes modern, clean JavaScript using ES6+ syntax."
+        },
+        {
+            "chapter_id": 14,
+            "chapter_title": "Error Handling",
+            "level": "intermediate",
+            "theory": "JavaScript uses `try...catch...finally` blocks to handle runtime errors gracefully. `throw` allows defining custom errors. The `Error` object contains a `message` and `stack` trace.\n\nHandling errors prevents applications from crashing unexpectedly.",
+            "examples": [
+                {
+                    "title": "Try-Catch",
+                    "code": "try {\n  throw new Error(\"Oops\");\n} catch (e) {\n  console.error(e.message);\n} finally {\n  console.log(\"Cleanup\");\n}",
+                    "explanation": "Catching exceptions."
+                },
+                {
+                    "title": "Custom Error",
+                    "code": "if (!valid) throw new Error(\"Invalid Input\");",
+                    "explanation": "Validation logic."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to generate an error manually?",
+                    "difficulty": "easy",
+                    "solution": "throw"
+                },
+                {
+                    "question": "Does `finally` run if no error occurs?",
+                    "difficulty": "easy",
+                    "solution": "Yes"
+                }
+            ],
+            "completion_criteria": "Can write robust code that anticipates and manages failures."
+        },
+        {
+            "chapter_id": 15,
+            "chapter_title": "Modules & Imports",
+            "level": "intermediate",
+            "theory": "ES Modules (ESM) allow splitting code into separate files. `export` exposes variables/functions, and `import` brings them in. There are Named Exports and Default Exports.\n\nModern browsers support `<script type=\"module\">`.",
+            "examples": [
+                {
+                    "title": "Exporting",
+                    "code": "// math.js\nexport const add = (a, b) => a + b;\nexport default function log() {}",
+                    "explanation": "Exposing functionality."
+                },
+                {
+                    "title": "Importing",
+                    "code": "import log, { add } from './math.js';",
+                    "explanation": "Consuming module."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to export a single main value from a module?",
+                    "difficulty": "medium",
+                    "solution": "default"
+                },
+                {
+                    "question": "Can you have multiple default exports?",
+                    "difficulty": "easy",
+                    "solution": "No"
+                }
+            ],
+            "completion_criteria": "Can structure larger applications using modular architecture."
+        },
+        {
+            "chapter_id": 16,
+            "chapter_title": "Asynchronous JavaScript",
+            "level": "intermediate",
+            "theory": "JavaScript is single-threaded but handles concurrency via the Event Loop. Asynchronous operations (timers, IO) don't block the main thread. Callbacks were the original way to handle async results.\n\n`setTimeout` and `setInterval` are basic async scheduling functions.",
+            "examples": [
+                {
+                    "title": "SetTimeout",
+                    "code": "console.log(\"Start\");\nsetTimeout(() => console.log(\"Async\"), 1000);\nconsole.log(\"End\");",
+                    "explanation": "Non-blocking delay."
+                },
+                {
+                    "title": "Callback Hell",
+                    "code": "getData(a => {\n  getMore(a, b => {\n    // Nested complexity\n  })\n})",
+                    "explanation": "The problem Promises solve."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Function to execute code after a delay?",
+                    "difficulty": "easy",
+                    "solution": "setTimeout"
+                },
+                {
+                    "question": "Is JavaScript multi-threaded?",
+                    "difficulty": "medium",
+                    "solution": "No (Single-threaded)"
+                }
+            ],
+            "completion_criteria": "Understands the non-blocking nature of JavaScript."
+        },
+        {
+            "chapter_id": 17,
+            "chapter_title": "Promises & Async/Await",
+            "level": "intermediate",
+            "theory": "Promises represent a value available now, later, or never. States: Pending, Fulfilled, Rejected. `async` functions return a Promise implicitly. `await` pauses execution until a Promise resolves.\n\nThis creates cleaner, synchronous-looking asynchronous code.",
+            "examples": [
+                {
+                    "title": "Promise Chain",
+                    "code": "fetch(url)\n  .then(res => res.json())\n  .catch(err => console.error(err));",
+                    "explanation": "Handling results."
+                },
+                {
+                    "title": "Async/Await",
+                    "code": "async function getData() {\n  const res = await fetch(url);\n  const data = await res.json();\n}",
+                    "explanation": "Modern syntax."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to pause function execution until promise resolves?",
+                    "difficulty": "easy",
+                    "solution": "await"
+                },
+                {
+                    "question": "What does an `async` function return?",
+                    "difficulty": "medium",
+                    "solution": "Promise"
+                }
+            ],
+            "completion_criteria": "Can manage complex asynchronous flows efficiently."
+        },
+        {
+            "chapter_id": 18,
+            "chapter_title": "Object-Oriented JavaScript",
+            "level": "advanced",
+            "theory": "Modern JS uses `class` syntax, although it's syntactic sugar over prototypal inheritance. Key features: `constructor`, `extends` (inheritance), `static` methods, and getters/setters.\n\n`super()` calls the parent constructor.",
+            "examples": [
+                {
+                    "title": "Class Definition",
+                    "code": "class Animal {\n  constructor(name) { this.name = name; }\n  speak() { console.log(\"Noise\"); }\n}",
+                    "explanation": "ES6 Classes."
+                },
+                {
+                    "title": "Inheritance",
+                    "code": "class Dog extends Animal {\n  speak() { console.log(\"Bark\"); }\n}",
+                    "explanation": "Overriding methods."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to create a subclass?",
+                    "difficulty": "easy",
+                    "solution": "extends"
+                },
+                {
+                    "question": "Method called automatically when creating an instance?",
+                    "difficulty": "easy",
+                    "solution": "constructor"
+                }
+            ],
+            "completion_criteria": "Can apply OOP principles in JavaScript."
+        },
+        {
+            "chapter_id": 19,
+            "chapter_title": "Closures & Hoisting",
+            "level": "advanced",
+            "theory": "A closure is a function bundled with its lexical environment. It 'remembers' variables from where it was created, even after the outer function has finished. Hoisting is the behavior where declarations are moved to the top of scope (var/function declarations).\n\nPractical use of closures: Data privacy and factory functions.",
+            "examples": [
+                {
+                    "title": "Closure",
+                    "code": "function makeCounter() {\n  let count = 0;\n  return () => count++;\n}\nconst c = makeCounter(); // c remembers count",
+                    "explanation": "Private state."
+                },
+                {
+                    "title": "Hoisting",
+                    "code": "console.log(x); // undefined\nvar x = 5;",
+                    "explanation": "Declaration hoisted, init is not."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Can a returned function access variables of its parent function?",
+                    "difficulty": "medium",
+                    "solution": "Yes (Closure)"
+                },
+                {
+                    "question": "Are `let` declarations hoisted?",
+                    "difficulty": "advanced",
+                    "solution": "Yes, but in Temporal Dead Zone"
+                }
+            ],
+            "completion_criteria": "Deeply understands scope mechanisms and memory behavior."
+        },
+        {
+            "chapter_id": 20,
+            "chapter_title": "Event Loop & Concurrency Model",
+            "level": "advanced",
+            "theory": "The Event Loop monitors the Call Stack and Callback Queue. If the stack is empty, it pushes tasks from the Queue (Macrotasks like setTimeout) or Microtask Queue (Promises) to the stack.\n\nMicrotasks have higher priority than Macrotasks.",
+            "examples": [
+                {
+                    "title": "Execution Order",
+                    "code": "console.log(1);\nsetTimeout(() => console.log(2), 0);\nPromise.resolve().then(() => console.log(3));\nconsole.log(4);\n// Output: 1, 4, 3, 2",
+                    "explanation": "Sync -> Micro -> Macro."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which queue has higher priority: Callback or Microtask?",
+                    "difficulty": "advanced",
+                    "solution": "Microtask Queue (Promises)"
+                },
+                {
+                    "question": "Does `setTimeout(fn, 0)` execute immediately?",
+                    "difficulty": "medium",
+                    "solution": "No (pushes to queue)"
+                }
+            ],
+            "completion_criteria": "Can reason about execution order in complex async scenarios."
+        },
+        {
+            "chapter_id": 21,
+            "chapter_title": "Common JavaScript Interview Patterns",
+            "level": "advanced",
+            "theory": "Interviews often test array manipulations (flattening, deduplicating), deep cloning objects, implementing polyfills (map, reduce, bind), and debouncing/throttling events.\n\nUnderstanding `prototype` chain and `this` binding rules (`call`, `apply`, `bind`) is critical.",
+            "examples": [
+                {
+                    "title": "Debounce",
+                    "code": "function debounce(fn, delay) {\n  let id;\n  return (...args) => {\n    clearTimeout(id);\n    id = setTimeout(() => fn(...args), delay);\n  };\n}",
+                    "explanation": "Rate limiting."
+                },
+                {
+                    "title": "Flatten Array",
+                    "code": "const flat = arr => arr.reduce((acc, val) => \n  Array.isArray(val) ? acc.concat(flat(val)) : acc.concat(val), []);",
+                    "explanation": "Recursive flattening."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Method to manually set `this` context for a function?",
+                    "difficulty": "medium",
+                    "solution": "call / apply / bind"
+                },
+                {
+                    "question": "Technique to limit how often a function runs?",
+                    "difficulty": "medium",
+                    "solution": "Throttle / Debounce"
+                }
+            ],
+            "completion_criteria": "Ready to solve algorithmic and structural problems in JS interviews."
+        },
+        {
+            "chapter_id": 22,
+            "chapter_title": "JavaScript Best Practices",
+            "level": "advanced",
+            "theory": "Write clean code: Use `const` by default, descriptive naming, and prefer `async/await`. Avoid global variables. Use strict mode (`'use strict'`).\n\nPerformance: Minimize DOM access, avoid memory leaks (clear intervals), and use efficient algorithms.",
+            "examples": [
+                {
+                    "title": "Clean Code",
+                    "code": "// Bad\nconst d = 100;\n// Good\nconst MAX_DURATION = 100;",
+                    "explanation": "Semantic naming."
+                },
+                {
+                    "title": "Strict Mode",
+                    "code": "'use strict';\nx = 3.14; // Error (undeclared)",
+                    "explanation": "Enforcing safety."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "String to enable strict mode?",
+                    "difficulty": "easy",
+                    "solution": "'use strict'"
+                },
+                {
+                    "question": "Default variable declaration to use?",
+                    "difficulty": "easy",
+                    "solution": "const"
+                }
+            ],
+            "completion_criteria": "Writes maintainable, performant, and professional JavaScript code."
+        }
+    ],
+    "quick_reference": {
+        "keywords": [
+            "let",
+            "const",
+            "function",
+            "return",
+            "if",
+            "else",
+            "for",
+            "while",
+            "break",
+            "continue",
+            "try",
+            "catch",
+            "async",
+            "await",
+            "class",
+            "export",
+            "import",
+            "this",
+            "new"
+        ],
+        "data_types": [
+            "String",
+            "Number",
+            "Boolean",
+            "Null",
+            "Undefined",
+            "Symbol",
+            "BigInt",
+            "Object",
+            "Array",
+            "Function"
+        ],
+        "operators": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "%",
+            "++",
+            "--",
+            "=",
+            "+=",
+            "==",
+            "===",
+            "!=",
+            "!==",
+            "&&",
+            "||",
+            "!",
+            "?",
+            ":",
+            "..."
+        ],
+        "common_patterns": [
+            "Module Pattern: Encapsulation",
+            "Observer: Event Handling",
+            "Singleton: Single Instance",
+            "Factory: Object Creation"
+        ]
+    }
+}

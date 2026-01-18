@@ -1,0 +1,866 @@
+{
+    "language": "C++",
+    "total_chapters": 26,
+    "estimated_hours": 14,
+    "chapters": [
+        {
+            "chapter_id": 1,
+            "chapter_title": "Introduction to C++ & Compilation",
+            "level": "beginner",
+            "theory": "C++ is a powerful, high-performance programming language that supports procedural, object-oriented, and generic programming. Unlike Python, C++ is a compiled language, meaning source code is translated into machine code by a compiler (like GCC or Clang) before execution.\n\nThe compilation process typically involves preprocessing, compiling, assembling, and linking. This comprehensive process allows for optimization and direct hardware manipulation, making C++ ideal for systems programming, game development, and high-frequency trading applications.",
+            "examples": [
+                {
+                    "title": "Minimal Structure",
+                    "code": "int main() {\n    return 0;\n}",
+                    "explanation": "Every C++ program must have a main function, which serves as the entry point."
+                },
+                {
+                    "title": "Comments",
+                    "code": "// Single line comment\n/* Multi-line\n   comment */",
+                    "explanation": "Comments are ignored by the compiler and used for documentation."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the entry point function of a C++ program?",
+                    "difficulty": "easy",
+                    "solution": "main"
+                },
+                {
+                    "question": "Which tool translates C++ code into machine code?",
+                    "difficulty": "easy",
+                    "solution": "Compiler"
+                }
+            ],
+            "completion_criteria": "Understands the compiled nature of C++ and the role of the main function."
+        },
+        {
+            "chapter_id": 2,
+            "chapter_title": "First C++ Program & Syntax",
+            "level": "beginner",
+            "theory": "A basic C++ program includes headers using `#include`, uses the standard namespace (or specific elements from it), and defines a `main` function. Semicolons `;` are mandatory to terminate statements.\n\nThe `iostream` header allows for input and output operations. `std::cout` is used to print to the console, often followed by `std::endl` or `\\n` for a newline.",
+            "examples": [
+                {
+                    "title": "Hello World",
+                    "code": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}",
+                    "explanation": "Standard Hello World program including iostream."
+                },
+                {
+                    "title": "Using Namespace",
+                    "code": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"No std:: needed here\";\n    return 0;\n}",
+                    "explanation": "Using namespace std saves typing but can cause naming conflicts."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Write a line of code to print 'C++' followed by a newline.",
+                    "difficulty": "easy",
+                    "solution": "std::cout << \"C++\" << std::endl;"
+                },
+                {
+                    "question": "What symbol terminates a statement in C++?",
+                    "difficulty": "easy",
+                    "solution": ";"
+                }
+            ],
+            "completion_criteria": "Can write, compile, and execute a basic 'Hello World' program."
+        },
+        {
+            "chapter_id": 3,
+            "chapter_title": "Variables & Data Types",
+            "level": "beginner",
+            "theory": "C++ is a statically typed language, meaning variable types must be declared before use. Primitive data types include `int` (integers), `float`/`double` (floating-point numbers), `char` (characters), and `bool` (boolean).\n\nThe size of data types can vary depending on the architecture, but `int` is typically 4 bytes. `auto` (C++11) allows the compiler to deduce the type from the initializer.",
+            "examples": [
+                {
+                    "title": "Declarations",
+                    "code": "int age = 25;\ndouble price = 19.99;\nchar grade = 'A';\nbool isReady = true;",
+                    "explanation": "Declaring variables of standard primitives."
+                },
+                {
+                    "title": "Auto Keyword",
+                    "code": "auto x = 10; // inferred as int\nauto y = 3.14; // inferred as double",
+                    "explanation": "Type inference reduces verbosity."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Declare an integer variable named `score` with value 100.",
+                    "difficulty": "easy",
+                    "solution": "int score = 100;"
+                },
+                {
+                    "question": "What is the memory size of a typical `int` in bytes?",
+                    "difficulty": "medium",
+                    "solution": "4"
+                }
+            ],
+            "completion_criteria": "Can declare and initialize variables with appropriate data types."
+        },
+        {
+            "chapter_id": 4,
+            "chapter_title": "Input & Output (cin / cout)",
+            "level": "beginner",
+            "theory": "The `iostream` library provides `std::cin` for standard input and `std::cout` for standard output. The extraction operator `>>` is used with `cin`, and the insertion operator `<<` is used with `cout`.\n\nInput operations can be chained, but spaces and newlines generally delimit input tokens.",
+            "examples": [
+                {
+                    "title": "Basic Input",
+                    "code": "int num;\nstd::cin >> num;",
+                    "explanation": "Reads an integer from user input."
+                },
+                {
+                    "title": "Multiple Inputs",
+                    "code": "int a, b;\nstd::cin >> a >> b;\nstd::cout << \"Sum: \" << a + b;",
+                    "explanation": "Reads two values and prints their sum."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Read a single character into variable `c`.",
+                    "difficulty": "easy",
+                    "solution": "char c; std::cin >> c;"
+                },
+                {
+                    "question": "Print the value of variable `x`.",
+                    "difficulty": "easy",
+                    "solution": "std::cout << x;"
+                }
+            ],
+            "completion_criteria": "Can handle basic I/O operations using streams."
+        },
+        {
+            "chapter_id": 5,
+            "chapter_title": "Operators & Expressions",
+            "level": "beginner",
+            "theory": "C++ supports arithmetic (`+`, `-`, `*`, `/`, `%`), comparison (`==`, `!=`, `<`, `>`), and logical (`&&`, `||`, `!`) operators. The modulus operator `%` returns the remainder of integer division.\n\nIncrement (`++`) and decrement (`--`) operators are common in loops. Operator precedence determines the order of evaluation.",
+            "examples": [
+                {
+                    "title": "Arithmetic",
+                    "code": "int res = 10 % 3; // Result is 1\nint x = 5;\nx++; // x is now 6",
+                    "explanation": "Modulus and increment operations."
+                },
+                {
+                    "title": "Logical Logic",
+                    "code": "bool check = (5 > 2) && (10 < 20);\n// true && true -> true",
+                    "explanation": "Combining conditions."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the result of `10 / 3` in integer arithmetic?",
+                    "difficulty": "easy",
+                    "solution": "3"
+                },
+                {
+                    "question": "Write an expression checking if `x` is between 1 and 10 (inclusive).",
+                    "difficulty": "medium",
+                    "solution": "x >= 1 && x <= 10"
+                }
+            ],
+            "completion_criteria": "Can construct and evaluate complex expressions."
+        },
+        {
+            "chapter_id": 6,
+            "chapter_title": "Conditional Statements",
+            "level": "beginner",
+            "theory": "Control flow is managed using `if`, `else if`, `else`, and `switch` statements. `if` blocks execute code based on boolean conditions. `switch` is useful for comparing a single variable against multiple constant values (cases).\n\nC++17 introduced init-statements for if/switch, allowing variable declaration within the condition scope.",
+            "examples": [
+                {
+                    "title": "If-Else",
+                    "code": "if (score >= 50) {\n    cout << \"Pass\";\n} else {\n    cout << \"Fail\";\n}",
+                    "explanation": "Basic branching logic."
+                },
+                {
+                    "title": "Switch Case",
+                    "code": "switch(grade) {\n    case 'A': cout << \"Excellent\"; break;\n    case 'B': cout << \"Good\"; break;\n    default: cout << \"Other\";\n}",
+                    "explanation": "Multi-way branching."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Write an `if` statement to check if `n` is even.",
+                    "difficulty": "easy",
+                    "solution": "if (n % 2 == 0)"
+                },
+                {
+                    "question": "What keyword is needed to stop fall-through in a switch statement?",
+                    "difficulty": "easy",
+                    "solution": "break"
+                }
+            ],
+            "completion_criteria": "Can implement decision-making logic in programs."
+        },
+        {
+            "chapter_id": 7,
+            "chapter_title": "Loops (for, while, do-while)",
+            "level": "beginner",
+            "theory": "Loops execute a block of code repeatedly. `for` loops are ideal when the number of iterations is known. `while` loops run as long as a condition is true. `do-while` loops guarantee at least one execution.\n\nC++11 introduced range-based for loops, which simplify iterating over arrays and containers.",
+            "examples": [
+                {
+                    "title": "Standard For Loop",
+                    "code": "for (int i = 0; i < 5; i++) {\n    cout << i << \" \";\n}",
+                    "explanation": "Iterates from 0 to 4."
+                },
+                {
+                    "title": "Do-While",
+                    "code": "int i = 0;\ndo {\n    cout << i;\n    i++;\n} while (i < 5);",
+                    "explanation": "Checks condition after execution."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Write a for loop that prints 10 down to 1.",
+                    "difficulty": "medium",
+                    "solution": "for(int i=10; i>0; i--) cout << i;"
+                },
+                {
+                    "question": "Which loop guarantees at least one execution?",
+                    "difficulty": "easy",
+                    "solution": "do-while"
+                }
+            ],
+            "completion_criteria": "Can automate repetitive tasks using various loop structures."
+        },
+        {
+            "chapter_id": 8,
+            "chapter_title": "Functions & Parameters",
+            "level": "beginner",
+            "theory": "Functions break code into modular chunks. They are defined with a return type, name, and parameters. `void` functions return nothing. Parameters can be passed by value (copy) or by reference (alias).\n\nFunction overloading allows multiple functions with the same name but different parameter lists.",
+            "examples": [
+                {
+                    "title": "Function Definition",
+                    "code": "int add(int a, int b) {\n    return a + b;\n}",
+                    "explanation": "Simple function returning an integer."
+                },
+                {
+                    "title": "Pass by Reference",
+                    "code": "void increment(int &val) {\n    val++;\n}",
+                    "explanation": "Modifies the original variable directly."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Define a void function `greet` that prints \"Hi\".",
+                    "difficulty": "easy",
+                    "solution": "void greet() { cout << \"Hi\"; }"
+                },
+                {
+                    "question": "Write a function signature for `max` taking two floats.",
+                    "difficulty": "easy",
+                    "solution": "float max(float a, float b);"
+                }
+            ],
+            "completion_criteria": "Can define and call modular functions with different parameter modes."
+        },
+        {
+            "chapter_id": 9,
+            "chapter_title": "Arrays & Strings",
+            "level": "beginner",
+            "theory": "Arrays are fixed-size collections of elements of the same type stored in contiguous memory. C-style strings are null-terminated character arrays. C++ `std::string` is a more robust class for text manipulation.\n\nAccessing array indices out of bounds leads to undefined behavior.",
+            "examples": [
+                {
+                    "title": "Array Basics",
+                    "code": "int nums[5] = {1, 2, 3, 4, 5};\ncout << nums[0]; // Access first element",
+                    "explanation": "Declaration and access."
+                },
+                {
+                    "title": "std::string",
+                    "code": "#include <string>\nstring s = \"Code\";\ns += \"Verse\";",
+                    "explanation": "Concatenation is easy with std::string."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Declare an array of 10 integers.",
+                    "difficulty": "easy",
+                    "solution": "int arr[10];"
+                },
+                {
+                    "question": "Get the length of string `s`.",
+                    "difficulty": "easy",
+                    "solution": "s.length();"
+                }
+            ],
+            "completion_criteria": "Understands contiguous memory storage and string manipulation."
+        },
+        {
+            "chapter_id": 10,
+            "chapter_title": "Pointers & References",
+            "level": "intermediate",
+            "theory": "Pointers store memory addresses of other variables. They are declared with `*` (e.g., `int* p`). The address-of operator `&` yields a variable's address. References (`&`) are safer, non-null aliases for existing variables.\n\nPointers allow for dynamic memory allocation and efficient array traversal.",
+            "examples": [
+                {
+                    "title": "Pointer Basics",
+                    "code": "int val = 20;\nint* ptr = &val;\ncout << *ptr; // Dereference to get 20",
+                    "explanation": "Storing address and accessing value."
+                },
+                {
+                    "title": "Reference",
+                    "code": "int a = 10;\nint& ref = a;\nref = 20; // a is now 20",
+                    "explanation": "Ref acts as an alias."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Declare a pointer `p` to an integer variable `x`.",
+                    "difficulty": "easy",
+                    "solution": "int* p = &x;"
+                },
+                {
+                    "question": "What operator accesses the value stored at a pointer address?",
+                    "difficulty": "easy",
+                    "solution": "*"
+                }
+            ],
+            "completion_criteria": "Can manipulate memory addresses and modify data indirectly."
+        },
+        {
+            "chapter_id": 11,
+            "chapter_title": "Dynamic Memory (new / delete)",
+            "level": "intermediate",
+            "theory": "Dynamic memory is allocated on the heap at runtime using `new`. This memory persists until explicitly deallocated with `delete`. For arrays, `new[]` and `delete[]` are used.\n\nFailing to delete memory causes memory leaks. Modern C++ encourages smart pointers (`unique_ptr`, `shared_ptr`) to automate this.",
+            "examples": [
+                {
+                    "title": "Allocation",
+                    "code": "int* p = new int;\n*p = 5;\ndelete p;",
+                    "explanation": "Allocating scalar integer."
+                },
+                {
+                    "title": "Array Allocation",
+                    "code": "int* arr = new int[10];\ndelete[] arr;",
+                    "explanation": "Allocating block of memory."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Allocate a single integer dynamically.",
+                    "difficulty": "easy",
+                    "solution": "int* p = new int;"
+                },
+                {
+                    "question": "What happens if you forget to call delete?",
+                    "difficulty": "medium",
+                    "solution": "Memory leak"
+                }
+            ],
+            "completion_criteria": "Can manage heap memory manually and avoid leaks."
+        },
+        {
+            "chapter_id": 12,
+            "chapter_title": "Structures & Unions",
+            "level": "intermediate",
+            "theory": "Structures (`struct`) group related variables under one name. Members are public by default. Unions allow storing different data types in the same memory location, but only one member can hold a value at a time.\n\nStructs are the precursors to classes; in C++, the only difference is default access level.",
+            "examples": [
+                {
+                    "title": "Struct",
+                    "code": "struct Point {\n    int x, y;\n};\nPoint p = {1, 2};",
+                    "explanation": "Grouping coordinates."
+                },
+                {
+                    "title": "Union",
+                    "code": "union Data {\n    int i;\n    float f;\n};",
+                    "explanation": "Shared memory space."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Define a struct `Person` with name and age.",
+                    "difficulty": "easy",
+                    "solution": "struct Person { string name; int age; };"
+                },
+                {
+                    "question": "Access member `x` of a struct pointer `ptr`.",
+                    "difficulty": "medium",
+                    "solution": "ptr->x"
+                }
+            ],
+            "completion_criteria": "Can model composite data types."
+        },
+        {
+            "chapter_id": 13,
+            "chapter_title": "Object-Oriented Programming Basics",
+            "level": "intermediate",
+            "theory": "OOP encapsulates data (attributes) and behavior (methods) into classes. Access modifiers (`public`, `private`, `protected`) control visibility. The `class` keyword is used, with members private by default.\n\nObjects are instances of classes. Methods define the actions an object can perform.",
+            "examples": [
+                {
+                    "title": "Simple Class",
+                    "code": "class Box {\npublic:\n    double length;\n    void setLength(double len) {\n        length = len;\n    }\n};",
+                    "explanation": "Class with public data and method."
+                },
+                {
+                    "title": "Encapsulation",
+                    "code": "class Bank {\nprivate:\n    int bal;\npublic:\n    void deposit(int amt) { bal += amt; }\n};",
+                    "explanation": "Hiding internal data."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What is the default access modifier in a class?",
+                    "difficulty": "easy",
+                    "solution": "private"
+                },
+                {
+                    "question": "Instantiate a class named `Car`.",
+                    "difficulty": "easy",
+                    "solution": "Car myCar;"
+                }
+            ],
+            "completion_criteria": "Can design and use classes with encapsulation principles."
+        },
+        {
+            "chapter_id": 14,
+            "chapter_title": "Constructors & Destructors",
+            "level": "intermediate",
+            "theory": "Constructors initializes objects. They have the same name as the class and no return type. The Destructor (`~Class`) cleans up resources when an object goes out of scope.\n\nC++ supports default, parameterized, and copy constructors.",
+            "examples": [
+                {
+                    "title": "Constructor",
+                    "code": "class Test {\npublic:\n    Test() { cout << \"Created\"; }\n};",
+                    "explanation": "Runs upon instantiation."
+                },
+                {
+                    "title": "Destructor",
+                    "code": "class Test {\npublic:\n    ~Test() { cout << \"Destroyed\"; }\n};",
+                    "explanation": "Runs automatically at end of scope."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Write a constructor for class `A`.",
+                    "difficulty": "easy",
+                    "solution": "A() {}"
+                },
+                {
+                    "question": "How is a destructor name written for class `B`?",
+                    "difficulty": "easy",
+                    "solution": "~B()"
+                }
+            ],
+            "completion_criteria": "Understands object lifecycle management."
+        },
+        {
+            "chapter_id": 15,
+            "chapter_title": "Inheritance",
+            "level": "intermediate",
+            "theory": "Inheritance allows a derived class to acquire properties from a base class. It promotes code reuse. Modes include public, protected, and private inheritance.\n\nBase class constructors are called before derived class constructors; destructors are called in reverse order.",
+            "examples": [
+                {
+                    "title": "Public Inheritance",
+                    "code": "class Base {};\nclass Derived : public Base {};",
+                    "explanation": "Type 'is-a' relationship."
+                },
+                {
+                    "title": "Accessing Base Members",
+                    "code": "class Base { public: int x; };\nclass Derived : public Base {\n    void set() { x = 10; }\n};",
+                    "explanation": "Derived accesses public members."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Inherit `Dog` publicly from `Animal`.",
+                    "difficulty": "easy",
+                    "solution": "class Dog : public Animal {};"
+                },
+                {
+                    "question": "Can a derived class access private members of the base class?",
+                    "difficulty": "medium",
+                    "solution": "No"
+                }
+            ],
+            "completion_criteria": "Can create class hierarchies to model relationships."
+        },
+        {
+            "chapter_id": 16,
+            "chapter_title": "Polymorphism & Virtual Functions",
+            "level": "intermediate",
+            "theory": "Polymorphism allows objects to be treated as instances of their parent class but act consistent with their actual type. Virtual functions enable this runtime binding (dynamic dispatch). Pure virtual functions (`= 0`) make a class abstract (interface).\n\nA virtual destructor is essential in base classes to ensure correct cleanup.",
+            "examples": [
+                {
+                    "title": "Virtual Function",
+                    "code": "class Base {\n    virtual void show() { cout << \"Base\"; }\n};\nclass Derived : public Base {\n    void show() override { cout << \"Derived\"; }\n};",
+                    "explanation": "Derived overrides Base behavior."
+                },
+                {
+                    "title": "Polymorphic Pointer",
+                    "code": "Base* b = new Derived();\nb->show(); // Prints \"Derived\"",
+                    "explanation": "Calls overridden method at runtime."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to enable runtime polymorphism.",
+                    "difficulty": "easy",
+                    "solution": "virtual"
+                },
+                {
+                    "question": "Declare a pure virtual function `draw`.",
+                    "difficulty": "medium",
+                    "solution": "virtual void draw() = 0;"
+                }
+            ],
+            "completion_criteria": "Can implement dynamic polymorphism using interfaces and overrides."
+        },
+        {
+            "chapter_id": 17,
+            "chapter_title": "Templates",
+            "level": "intermediate",
+            "theory": "Templates enable generic programming. You can write functions and classes that work with any data type. The code is generated at compile time for each type used.\n\n`template <typename T>` is the standard syntax.",
+            "examples": [
+                {
+                    "title": "Function Template",
+                    "code": "template <typename T>\nT add(T a, T b) {\n    return a + b;\n}",
+                    "explanation": "Works for int, double, etc."
+                },
+                {
+                    "title": "Class Template",
+                    "code": "template <class T>\nclass Box {\n    T value;\n};",
+                    "explanation": "Generic container."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Declare a template parameter `T`.",
+                    "difficulty": "easy",
+                    "solution": "template <typename T>"
+                },
+                {
+                    "question": "Instantiate a `Box` template for `int`.",
+                    "difficulty": "medium",
+                    "solution": "Box<int> myBox;"
+                }
+            ],
+            "completion_criteria": "Can write generic, type-agnostic code."
+        },
+        {
+            "chapter_id": 18,
+            "chapter_title": "Exception Handling",
+            "level": "intermediate",
+            "theory": "C++ handles errors using `try`, `catch`, and `throw`. Exceptions disrupt normal flow and transfer control to the nearest catch block. Standard exceptions inherit from `std::exception`.\n\nStack unwinding occurs during exception propagation, destroying automatic objects.",
+            "examples": [
+                {
+                    "title": "Try-Catch",
+                    "code": "try {\n    throw runtime_error(\"Error\");\n} catch (exception& e) {\n    cout << e.what();\n}",
+                    "explanation": "Catches standard exceptions."
+                },
+                {
+                    "title": "Throwing int",
+                    "code": "try { throw 404; }\ncatch (int e) { cout << \"Error \" << e; }",
+                    "explanation": "Primitives can also be thrown."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Throw a standard runtime error.",
+                    "difficulty": "medium",
+                    "solution": "throw std::runtime_error(\"msg\");"
+                },
+                {
+                    "question": "Which block ensures code runs regardless of error? (Trick: C++ doesn't have it)",
+                    "difficulty": "medium",
+                    "solution": "RAII (destructors)"
+                }
+            ],
+            "completion_criteria": "Can write reliable code that gracefully handles runtime errors."
+        },
+        {
+            "chapter_id": 19,
+            "chapter_title": "File Handling",
+            "level": "intermediate",
+            "theory": "The `<fstream>` library provides `ifstream` for reading, `ofstream` for writing, and `fstream` for both. Streams should be closed after use, though destructors handle this automatically (RAII).\n\nChecking `is_open()` ensures the file was successfully accessed.",
+            "examples": [
+                {
+                    "title": "Writing to File",
+                    "code": "ofstream file(\"out.txt\");\nfile << \"Hello File\";\nfile.close();",
+                    "explanation": "Output file stream."
+                },
+                {
+                    "title": "Reading Line by Line",
+                    "code": "ifstream file(\"in.txt\");\nstring line;\nwhile (getline(file, line)) {\n    cout << line;\n}",
+                    "explanation": "Reads until EOF."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Open 'data.txt' for reading.",
+                    "difficulty": "easy",
+                    "solution": "ifstream f(\"data.txt\");"
+                },
+                {
+                    "question": "Which class is used for file output?",
+                    "difficulty": "easy",
+                    "solution": "ofstream"
+                }
+            ],
+            "completion_criteria": "Can persist data storage using file streams."
+        },
+        {
+            "chapter_id": 20,
+            "chapter_title": "STL Containers",
+            "level": "advanced",
+            "theory": "The Standard Template Library (STL) provides optimized containers. Key ones include `vector` (dynamic array), `list` (doubly linked list), `map` (balanced BST), and `unordered_map` (hash table).\n\nVectors are the default choice for sequences due to cache coherence.",
+            "examples": [
+                {
+                    "title": "Vector Usage",
+                    "code": "#include <vector>\nvector<int> v = {1, 2, 3};\nv.push_back(4);",
+                    "explanation": "Dynamic resizing array."
+                },
+                {
+                    "title": "Map Usage",
+                    "code": "#include <map>\nmap<string, int> m;\nm[\"Alice\"] = 30;",
+                    "explanation": "Key-value pairs sorted by key."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Add element 5 to end of vector `v`.",
+                    "difficulty": "easy",
+                    "solution": "v.push_back(5);"
+                },
+                {
+                    "question": "Which container implements a hash table?",
+                    "difficulty": "medium",
+                    "solution": "unordered_map"
+                }
+            ],
+            "completion_criteria": "Can select and use the appropriate data structures from the STL."
+        },
+        {
+            "chapter_id": 21,
+            "chapter_title": "STL Algorithms",
+            "level": "advanced",
+            "theory": "STL Algorithms (`<algorithm>`) operate on ranges of elements via iterators. Common algorithms include `sort`, `find`, `transform`, and `accumulate`.\n\nThey are often highly optimized and safer than writing manual loops.",
+            "examples": [
+                {
+                    "title": "Sorting",
+                    "code": "#include <algorithm>\nsort(v.begin(), v.end());",
+                    "explanation": "Sorts a vector in ascending order."
+                },
+                {
+                    "title": "Finding",
+                    "code": "auto it = find(v.begin(), v.end(), 5);\nif (it != v.end()) cout << \"Found\";",
+                    "explanation": "Linear search."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Sort vector `v` in reverse.",
+                    "difficulty": "medium",
+                    "solution": "sort(v.rbegin(), v.rend());"
+                },
+                {
+                    "question": "Count occurrences of `x` in a range.",
+                    "difficulty": "medium",
+                    "solution": "count(begin, end, x)"
+                }
+            ],
+            "completion_criteria": "Can utilize built-in algorithms to manipulate data efficiently."
+        },
+        {
+            "chapter_id": 22,
+            "chapter_title": "Iterators",
+            "level": "advanced",
+            "theory": "Iterators connect containers and algorithms. They behave like pointers. Types includes Input, Output, Forward, Bidirectional, and Random Access iterators, determining efficient operations supported.\n\n`begin()` returns an iterator to the first element, `end()` to one past the last.",
+            "examples": [
+                {
+                    "title": "Iterator Loop",
+                    "code": "vector<int> v = {1, 2, 3};\nfor (auto it = v.begin(); it != v.end(); ++it) {\n    cout << *it;\n}",
+                    "explanation": "Traversing with iterators."
+                },
+                {
+                    "title": "Constant Iterator",
+                    "code": "vector<int>::const_iterator it = v.cbegin();",
+                    "explanation": "Read-only access."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Get iterator to the start of vector `v`.",
+                    "difficulty": "easy",
+                    "solution": "v.begin()"
+                },
+                {
+                    "question": "Dereference iterator `it`.",
+                    "difficulty": "easy",
+                    "solution": "*it"
+                }
+            ],
+            "completion_criteria": "Can traverse and manipulate containers using iterators."
+        },
+        {
+            "chapter_id": 23,
+            "chapter_title": "Time & Space Complexity",
+            "level": "advanced",
+            "theory": "Understanding Big O notation is critical for writing scalable C++ code. Operations on vectors like push_back are amortized O(1), but inserting in the middle is O(n). Map operations are O(log n).\n\nSpace complexity tracks heap and stack usage relative to input size.",
+            "examples": [
+                {
+                    "title": "O(n) Loop",
+                    "code": "for(int x : arr) { ... }",
+                    "explanation": "Linear time."
+                },
+                {
+                    "title": "O(log n) Search",
+                    "code": "binary_search(v.begin(), v.end(), 5);",
+                    "explanation": "Logarithmic time on sorted data."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Complexity of accessing `vector[i]`?",
+                    "difficulty": "medium",
+                    "solution": "O(1)"
+                },
+                {
+                    "question": "Complexity of `map::find`?",
+                    "difficulty": "medium",
+                    "solution": "O(log n)"
+                }
+            ],
+            "completion_criteria": "Can analyze and optimize code efficiency."
+        },
+        {
+            "chapter_id": 24,
+            "chapter_title": "Memory Management Internals",
+            "level": "advanced",
+            "theory": "Deep C++ involves understanding stack vs. heap allocation, padding, alignment, and virtual memory. The stack is fast but limited; the heap is flexible but slower.\n\nSmart pointers (`unique_ptr`, `shared_ptr`, `weak_ptr`) in `<memory>` define ownership semantics and automate deallocation via reference counting or unique ownership.",
+            "examples": [
+                {
+                    "title": "Unique Pointer",
+                    "code": "#include <memory>\nunique_ptr<int> p = make_unique<int>(10);",
+                    "explanation": "Auto-deletes when out of scope. No overhead."
+                },
+                {
+                    "title": "Shared Pointer",
+                    "code": "shared_ptr<int> p1 = make_shared<int>(20);\nshared_ptr<int> p2 = p1;",
+                    "explanation": "Reference counted ownership."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which smart pointer forbids copying?",
+                    "difficulty": "medium",
+                    "solution": "unique_ptr"
+                },
+                {
+                    "question": "Where are local `int` variables stored?",
+                    "difficulty": "easy",
+                    "solution": "Stack"
+                }
+            ],
+            "completion_criteria": "Can manage object lifetimes safely using modern C++ memory tools."
+        },
+        {
+            "chapter_id": 25,
+            "chapter_title": "Common C++ Interview Patterns",
+            "level": "advanced",
+            "theory": "C++ interviews often stress manual memory management (implementing a string class), pointer manipulation (linked lists), or usage of `unordered_map` for O(1) lookups. Move semantics (C++11) and `std::move` are frequent topics.\n\nKnowledge of the rule of three/five is essential for class design.",
+            "examples": [
+                {
+                    "title": "Move Semantics",
+                    "code": "string a = \"Hello\";\nstring b = std::move(a);\n// a is now in valid but unspecified state",
+                    "explanation": "Transfers ownership of resources efficiently."
+                },
+                {
+                    "title": "Rule of Three",
+                    "code": "// If you define destructor, copy ctor, or assignment op,\n// you likely need all three.",
+                    "explanation": "Ensures proper resource copying."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Cast `a` to r-value reference to enable moving.",
+                    "difficulty": "medium",
+                    "solution": "std::move(a)"
+                },
+                {
+                    "question": "Implement a swap function using references.",
+                    "difficulty": "medium",
+                    "solution": "void s(int &a, int &b) { int t=a; a=b; b=t; }"
+                }
+            ],
+            "completion_criteria": "Can solve algorithmic and system-design problems using C++ patterns."
+        },
+        {
+            "chapter_id": 26,
+            "chapter_title": "C++ Best Practices",
+            "level": "advanced",
+            "theory": "Modern C++ (11/14/17/20) emphasizes RAII, standard algorithms over raw loops, and `const` correctness. Avoid `using namespace std` in headers. Prefer passing objects by const reference to avoid copies.\n\nCode correctness tools like Valgrind or Sanitizers help detect leaks.",
+            "examples": [
+                {
+                    "title": "Const Correctness",
+                    "code": "void print(const string& s) {\n    cout << s;\n}",
+                    "explanation": "Avoids copy and prevents modification."
+                },
+                {
+                    "title": "Range-Based For",
+                    "code": "for (const auto& item : items) {\n    // efficient iteration\n}",
+                    "explanation": "Modern and safe iteration."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Keyword to ensure a method doesn't modify the object.",
+                    "difficulty": "easy",
+                    "solution": "const"
+                },
+                {
+                    "question": "Should you put `using namespace std` in a header file?",
+                    "difficulty": "easy",
+                    "solution": "No"
+                }
+            ],
+            "completion_criteria": "Writes clean, modern, and efficient C++ code adhering to industry standards."
+        }
+    ],
+    "quick_reference": {
+        "keywords": [
+            "auto",
+            "const",
+            "static",
+            "virtual",
+            "class",
+            "struct",
+            "template",
+            "new",
+            "delete",
+            "namespace",
+            "using",
+            "friend",
+            "this"
+        ],
+        "data_types": [
+            "int",
+            "double",
+            "float",
+            "char",
+            "bool",
+            "void",
+            "wchar_t",
+            "size_t",
+            "std::string",
+            "std::vector",
+            "std::map"
+        ],
+        "operators": [
+            "::",
+            "->",
+            ".",
+            "<<",
+            ">>",
+            "++",
+            "--",
+            "==",
+            "!=",
+            "&&",
+            "||",
+            "&",
+            "*",
+            "new",
+            "delete"
+        ],
+        "common_patterns": [
+            "RAII: Resource Acquisition Is Initialization",
+            "Pimpl: Pointer to Implementation",
+            "Singleton: Static instance",
+            "Factory: Object creation interface"
+        ]
+    }
+}

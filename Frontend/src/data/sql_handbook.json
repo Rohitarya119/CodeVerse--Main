@@ -1,0 +1,531 @@
+{
+    "language": "SQL",
+    "version": "1.0.0",
+    "total_chapters": 15,
+    "estimated_hours": 8,
+    "chapters": [
+        {
+            "chapter_id": 1,
+            "chapter_title": "Introduction to Databases & SQL",
+            "level": "beginner",
+            "theory": "A Database is a structured collection of data. A Database Management System (DBMS) is software that interacts with end-users, applications, and the database itself to capture and analyze the data. SQL (Structured Query Language) is the standard language for relational database management systems (RDBMS) like MySQL, PostgreSQL, and SQL Server. Data is stored in tables consisting of rows (records) and columns (fields).",
+            "examples": [
+                {
+                    "title": "Basic Table Structure",
+                    "code": "-- Example of a Users table\n-- Columns: ID, Name, Email\n-- Rows: Individual user records",
+                    "explanation": "Tables organize data into a grid format."
+                },
+                {
+                    "title": "SQL Syntax",
+                    "code": "-- SQL keywords are case-insensitive, but uppercase is standard\nSELECT * FROM Users;",
+                    "explanation": "Standard format for queries."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What does SQL stand for?",
+                    "difficulty": "easy",
+                    "solution": "Structured Query Language"
+                },
+                {
+                    "question": "What is a row in a table also called?",
+                    "difficulty": "easy",
+                    "solution": "Record"
+                }
+            ],
+            "completion_criteria": "Understands the basic concept of RDBMS and the role of SQL."
+        },
+        {
+            "chapter_id": 2,
+            "chapter_title": "SELECT Queries",
+            "level": "beginner",
+            "theory": "The `SELECT` statement is used to select data from a database. The data returned is stored in a result table, called the result-set. You can select specific columns or all columns using the wildcard `*`.",
+            "examples": [
+                {
+                    "title": "Select All",
+                    "code": "SELECT * FROM Employees;",
+                    "explanation": "Retrieves every column and row from the Employees table."
+                },
+                {
+                    "title": "Select Specific Columns",
+                    "code": "SELECT FirstName, LastName FROM Employees;",
+                    "explanation": "Retrieves only the specified columns."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Write a query to select only `City` from `Customers`.",
+                    "difficulty": "easy",
+                    "solution": "SELECT City FROM Customers;"
+                },
+                {
+                    "question": "What character selects all columns?",
+                    "difficulty": "easy",
+                    "solution": "*"
+                }
+            ],
+            "completion_criteria": "Can write basic queries to retrieve data from single tables."
+        },
+        {
+            "chapter_id": 3,
+            "chapter_title": "WHERE Clause & Filters",
+            "level": "beginner",
+            "theory": "The `WHERE` clause is used to filter records. It extracts only those records that fulfill a specified condition. Operators include `=`, `<>`, `>`, `<`, `>=`, `<=`, `BETWEEN`, `LIKE`, `IN`, and logical operators `AND`, `OR`, `NOT`.",
+            "examples": [
+                {
+                    "title": "Basic Filter",
+                    "code": "SELECT * FROM Products WHERE Price > 20;",
+                    "explanation": "Selects products costing more than 20."
+                },
+                {
+                    "title": "AND Operator",
+                    "code": "SELECT * FROM Users WHERE Age > 18 AND Role = 'Admin';",
+                    "explanation": "Both conditions must be true."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Query users named 'Alice'.",
+                    "difficulty": "easy",
+                    "solution": "SELECT * FROM Users WHERE Name = 'Alice';"
+                },
+                {
+                    "question": "Filter products with price between 10 and 50.",
+                    "difficulty": "medium",
+                    "solution": "SELECT * FROM Products WHERE Price BETWEEN 10 AND 50;"
+                }
+            ],
+            "completion_criteria": "Can effectively filter datasets based on specific criteria."
+        },
+        {
+            "chapter_id": 4,
+            "chapter_title": "ORDER BY & LIMIT",
+            "level": "beginner",
+            "theory": "The `ORDER BY` keyword is used to sort the result-set in ascending (`ASC`) or descending (`DESC`) order. `ASC` is default. The `LIMIT` clause (or `TOP` in SQL Server) specifies the number of records to return, useful for paging or large tables.",
+            "examples": [
+                {
+                    "title": "Sorting",
+                    "code": "SELECT * FROM Students ORDER BY Score DESC;",
+                    "explanation": "Sorts students by Score from highest to lowest."
+                },
+                {
+                    "title": "Pagination",
+                    "code": "SELECT * FROM Posts LIMIT 10 OFFSET 20;",
+                    "explanation": "Skips first 20 records and returns the next 10."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Sort employees by Salary (lowest to highest).",
+                    "difficulty": "easy",
+                    "solution": "SELECT * FROM Employees ORDER BY Salary ASC;"
+                },
+                {
+                    "question": "Get the top 5 highest paid employees.",
+                    "difficulty": "medium",
+                    "solution": "SELECT * FROM Employees ORDER BY Salary DESC LIMIT 5;"
+                }
+            ],
+            "completion_criteria": "Can sort results and limit the volume of data returned."
+        },
+        {
+            "chapter_id": 5,
+            "chapter_title": "Aggregate Functions",
+            "level": "beginner",
+            "theory": "Aggregate functions perform a calculation on a set of values and return a single value. Common functions: `COUNT()`, `SUM()`, `AVG()` (average), `MIN()`, `MAX()`. `DISTINCT` can be used inside `COUNT` to count unique values.",
+            "examples": [
+                {
+                    "title": "Count Rows",
+                    "code": "SELECT COUNT(*) FROM Orders;",
+                    "explanation": "Returns total number of orders."
+                },
+                {
+                    "title": "Average",
+                    "code": "SELECT AVG(Price) FROM Products;",
+                    "explanation": "Calculates the average price."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Find the highest score in the `Exams` table.",
+                    "difficulty": "easy",
+                    "solution": "SELECT MAX(Score) FROM Exams;"
+                },
+                {
+                    "question": "Count distinct cities in `Customers`.",
+                    "difficulty": "medium",
+                    "solution": "SELECT COUNT(DISTINCT City) FROM Customers;"
+                }
+            ],
+            "completion_criteria": "Can calculate summary statistics from datasets."
+        },
+        {
+            "chapter_id": 6,
+            "chapter_title": "GROUP BY & HAVING",
+            "level": "intermediate",
+            "theory": "The `GROUP BY` statement groups rows that have the same values into summary rows, usually used with aggregate functions. `HAVING` was added because the `WHERE` keyword cannot be used with aggregate functions. `WHERE` filters rows, `HAVING` filters groups.",
+            "examples": [
+                {
+                    "title": "Group By Category",
+                    "code": "SELECT Category, COUNT(*) FROM Products GROUP BY Category;",
+                    "explanation": "Counts products in each category."
+                },
+                {
+                    "title": "Having Condition",
+                    "code": "SELECT Dept, SUM(Salary) FROM Employees GROUP BY Dept HAVING SUM(Salary) > 100000;",
+                    "explanation": "Filters groups where total salary exceeds 100k."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Group orders by CustomerID and count them.",
+                    "difficulty": "medium",
+                    "solution": "SELECT CustomerID, COUNT(*) FROM Orders GROUP BY CustomerID;"
+                },
+                {
+                    "question": "Show departments with more than 10 employees.",
+                    "difficulty": "medium",
+                    "solution": "SELECT Dept, COUNT(*) FROM Employees GROUP BY Dept HAVING COUNT(*) > 10;"
+                }
+            ],
+            "completion_criteria": "Can aggregate data by categories and filter the aggregated results."
+        },
+        {
+            "chapter_id": 7,
+            "chapter_title": "JOINS (INNER, LEFT, RIGHT)",
+            "level": "intermediate",
+            "theory": "A `JOIN` clause is used to combine rows from two or more tables based on a related column between them. `INNER JOIN`: Matching values in both. `LEFT JOIN`: All from left, matching from right. `RIGHT JOIN`: All from right, matching from left. `FULL JOIN`: Match in either.",
+            "examples": [
+                {
+                    "title": "Inner Join",
+                    "code": "SELECT Orders.ID, Customers.Name FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.ID;",
+                    "explanation": "Only returns orders with valid customers."
+                },
+                {
+                    "title": "Left Join",
+                    "code": "SELECT Customers.Name, Orders.ID FROM Customers LEFT JOIN Orders ON Customers.ID = Orders.CustomerID;",
+                    "explanation": "Returns all customers, even those without orders (NULL)."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Join Users and Posts to get all posts with author names.",
+                    "difficulty": "medium",
+                    "solution": "SELECT Users.Name, Posts.Title FROM Posts INNER JOIN Users ON Posts.UserID = Users.ID;"
+                },
+                {
+                    "question": "Which join returns all left table rows regardless of match?",
+                    "difficulty": "easy",
+                    "solution": "LEFT JOIN"
+                }
+            ],
+            "completion_criteria": "Can combine data from multiple tables using various join types."
+        },
+        {
+            "chapter_id": 8,
+            "chapter_title": "Subqueries",
+            "level": "intermediate",
+            "theory": "A Subquery (nested query) is a query within another SQL query. It can be used in `SELECT`, `FROM`, or `WHERE` clauses. Subqueries are often used with `IN`, `EXISTS`, or comparison operators to use the result of one query as input for another.",
+            "examples": [
+                {
+                    "title": "Subquery in WHERE",
+                    "code": "SELECT * FROM Products WHERE Price > (SELECT AVG(Price) FROM Products);",
+                    "explanation": "Selects products more expensive than average."
+                },
+                {
+                    "title": "EXISTS Operator",
+                    "code": "SELECT Name FROM Suppliers WHERE EXISTS (SELECT * FROM Products WHERE Products.SupplierID = Suppliers.ID AND Price < 20);",
+                    "explanation": "Finds suppliers with cheap products."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Find employees earning more than the maximum salary in Dept 'HR'.",
+                    "difficulty": "medium",
+                    "solution": "SELECT * FROM Employees WHERE Salary > (SELECT MAX(Salary) FROM Employees WHERE Dept = 'HR');"
+                },
+                {
+                    "question": "Use subquery to find customers who placed orders.",
+                    "difficulty": "medium",
+                    "solution": "SELECT * FROM Customers WHERE ID IN (SELECT CustomerID FROM Orders);"
+                }
+            ],
+            "completion_criteria": "Can write nested queries to solve complex data retrieval problems."
+        },
+        {
+            "chapter_id": 9,
+            "chapter_title": "Views & Indexes",
+            "level": "intermediate",
+            "theory": "A `VIEW` is a virtual table based on the result-set of an SQL statement. It simplifies complex queries. An `INDEX` is used to retrieve data from the database more quickly than otherwise. Indexes speed up reads but slow down writes (INSERT/UPDATE).",
+            "examples": [
+                {
+                    "title": "Create View",
+                    "code": "CREATE VIEW HighValueCustomers AS SELECT * FROM Customers WHERE LTV > 1000;",
+                    "explanation": "Saves the query logic for reuse."
+                },
+                {
+                    "title": "Create Index",
+                    "code": "CREATE INDEX idx_lastname ON Employees (LastName);",
+                    "explanation": "Speeds up searches by LastName."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Command to remove a view?",
+                    "difficulty": "easy",
+                    "solution": "DROP VIEW ViewName;"
+                },
+                {
+                    "question": "Why not index every column?",
+                    "difficulty": "medium",
+                    "solution": "Slows down write operations and consumes storage."
+                }
+            ],
+            "completion_criteria": "Can optimize database access and simplify queries using Views and Indexes."
+        },
+        {
+            "chapter_id": 10,
+            "chapter_title": "Constraints & Keys",
+            "level": "intermediate",
+            "theory": "Constraints enforce rules for data. `PRIMARY KEY`: Uniquely identifies each record (Not Null + Unique). `FOREIGN KEY`: Links two tables. `NOT NULL`: Ensures column has no NULL values. `UNIQUE`: Ensures all values in column are different. `CHECK`: Ensures values satisfy a condition.",
+            "examples": [
+                {
+                    "title": "Create Table with Constraints",
+                    "code": "CREATE TABLE Persons (\n ID int PRIMARY KEY,\n Age int CHECK (Age>=18)\n);",
+                    "explanation": "Enforcing ID uniqueness and Age limit."
+                },
+                {
+                    "title": "Foreign Key",
+                    "code": "FOREIGN KEY (PersonID) REFERENCES Persons(ID)",
+                    "explanation": "Enforces referential integrity."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which key uniquely identifies a record?",
+                    "difficulty": "easy",
+                    "solution": "Primary Key"
+                },
+                {
+                    "question": "Constraint to preventing NULL values?",
+                    "difficulty": "easy",
+                    "solution": "NOT NULL"
+                }
+            ],
+            "completion_criteria": "Can design robust table schemas with data integrity rules."
+        },
+        {
+            "chapter_id": 11,
+            "chapter_title": "INSERT, UPDATE, DELETE",
+            "level": "advanced",
+            "theory": "DML (Data Manipulation Language) commands modify data. `INSERT INTO`: Adds new rows. `UPDATE`: Modifies existing records (Use `WHERE`!). `DELETE FROM`: Removes records (Use `WHERE`!). Ignoring `WHERE` in UPDATE/DELETE will affect ALL rows.",
+            "examples": [
+                {
+                    "title": "Insert",
+                    "code": "INSERT INTO Users (Name, Email) VALUES ('Bob', 'bob@test.com');",
+                    "explanation": "Adding a new user."
+                },
+                {
+                    "title": "Update",
+                    "code": "UPDATE Users SET Email = 'new@test.com' WHERE ID = 1;",
+                    "explanation": "Changing a specific user's email."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Command to delete user with ID 5?",
+                    "difficulty": "medium",
+                    "solution": "DELETE FROM Users WHERE ID = 5;"
+                },
+                {
+                    "question": "What happens if you omit WHERE in UPDATE?",
+                    "difficulty": "medium",
+                    "solution": "Updates all rows in the table."
+                }
+            ],
+            "completion_criteria": "Can safely manipulate data within tables."
+        },
+        {
+            "chapter_id": 12,
+            "chapter_title": "Transactions & ACID",
+            "level": "advanced",
+            "theory": "A Transaction is a sequence of operations performed as a single logical unit of work. ACID properties: **A**tomicity (All or nothing), **C**onsistency (Valid state), **I**solation (Independent execution), **D**urability (Saved permanently). Commands: `BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK`.",
+            "examples": [
+                {
+                    "title": "Bank Transfer",
+                    "code": "BEGIN TRANSACTION;\nUPDATE Accounts SET Bal = Bal - 100 WHERE ID = 1;\nUPDATE Accounts SET Bal = Bal + 100 WHERE ID = 2;\nCOMMIT;",
+                    "explanation": "Ensures money isn't lost if logic fails halfway."
+                },
+                {
+                    "title": "Rollback",
+                    "code": "IF Error THEN ROLLBACK;",
+                    "explanation": "Undoes changes on error."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "What does Atomicity maintain?",
+                    "difficulty": "medium",
+                    "solution": "All operations complete or none do."
+                },
+                {
+                    "question": "Command to save transaction changes?",
+                    "difficulty": "easy",
+                    "solution": "COMMIT"
+                }
+            ],
+            "completion_criteria": "Understands how to ensure data integrity during complex operations."
+        },
+        {
+            "chapter_id": 13,
+            "chapter_title": "Normalization",
+            "level": "advanced",
+            "theory": "Normalization is organizing data to reduce redundancy and improve integrity. 1NF: Atomic values. 2NF: 1NF + partial dependencies removed. 3NF: 2NF + transitive dependencies removed. Denormalization is adding redundancy for read performance.",
+            "examples": [
+                {
+                    "title": "1NF Violation",
+                    "code": "Table: Users\nColumn: PhoneNumbers ('555-1234, 555-9876')",
+                    "explanation": "Multiple values in one cell violates 1NF."
+                },
+                {
+                    "title": "3NF Concept",
+                    "code": "Start: Orders(OrderID, Product, Supplier, SupplierPhone)\nEnd: Orders(OrderID, ProductID), Products(ProductID, SupplierID), Suppliers(SupplierID, Phone)",
+                    "explanation": "Removing transitive dependencies."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Which form requires columns to depend only on the primary key?",
+                    "difficulty": "advanced",
+                    "solution": "3NF"
+                },
+                {
+                    "question": "Main goal of normalization?",
+                    "difficulty": "medium",
+                    "solution": "Reduce data redundancy"
+                }
+            ],
+            "completion_criteria": "Can design efficient and anomaly-free database schemas."
+        },
+        {
+            "chapter_id": 14,
+            "chapter_title": "Query Optimization Basics",
+            "level": "advanced",
+            "theory": "Optimization improves query performance. Techniques: Use Indexes efficiently (SARGable queries), avoid `SELECT *`, use `EXPLAIN` to analyze query plans, limit subqueries, and join order. Look out for full table scans.",
+            "examples": [
+                {
+                    "title": "Avoid Wildcard",
+                    "code": "-- Slow\nSELECT * FROM Logs;\n-- Fast\nSELECT LogID, Message FROM Logs;",
+                    "explanation": "Reduces I/O load."
+                },
+                {
+                    "title": "SARGable",
+                    "code": "-- Bad (Index unused)\nWHERE YEAR(Date) = 2023\n-- Good (Index used)\nWHERE Date >= '2023-01-01' AND Date < '2024-01-01'",
+                    "explanation": "Search ARGument ABLE."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Command to see how SQL engine executes a query?",
+                    "difficulty": "medium",
+                    "solution": "EXPLAIN"
+                },
+                {
+                    "question": "Why is `SELECT *` bad?",
+                    "difficulty": "medium",
+                    "solution": "Fetches unnecessary data, increases network/IO load."
+                }
+            ],
+            "completion_criteria": "Can write efficient SQL and identify performance bottlenecks."
+        },
+        {
+            "chapter_id": 15,
+            "chapter_title": "Common SQL Interview Patterns",
+            "level": "advanced",
+            "theory": "Interviews often test: Finding Nth highest salary (OFFSET/DENSE_RANK), Self Joins (Employee Manager), Consecutive Records (Lead/Lag), and Recursive CTEs (Hierarchy). Window Functions (`OVER`, `PARTITION BY`) are critical.",
+            "examples": [
+                {
+                    "title": "Nth Highest Salary",
+                    "code": "SELECT DISTINCT Salary FROM Employees ORDER BY Salary DESC LIMIT 1 OFFSET 2;",
+                    "explanation": "Gets 3rd highest salary."
+                },
+                {
+                    "title": "Rank Window",
+                    "code": "SELECT Name, RANK() OVER (ORDER BY Score DESC) FROM Students;",
+                    "explanation": "Assigns rank based on score."
+                }
+            ],
+            "exercises": [
+                {
+                    "question": "Function to access next row's value?",
+                    "difficulty": "advanced",
+                    "solution": "LEAD()"
+                },
+                {
+                    "question": "How to find duplicate emails?",
+                    "difficulty": "advanced",
+                    "solution": "GROUP BY Email HAVING COUNT(*) > 1;"
+                }
+            ],
+            "completion_criteria": "Ready to solve complex analytical SQL problems in interviews."
+        }
+    ],
+    "quick_reference": {
+        "keywords": [
+            "SELECT",
+            "FROM",
+            "WHERE",
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "CREATE",
+            "DROP",
+            "ALTER",
+            "JOIN",
+            "GROUP BY",
+            "ORDER BY",
+            "HAVING",
+            "LIMIT",
+            "DISTINCT",
+            "AS",
+            "CASE",
+            "WHEN",
+            "THEN"
+        ],
+        "data_types": [
+            "INT",
+            "VARCHAR",
+            "TEXT",
+            "DATE",
+            "TIMESTAMP",
+            "BOOLEAN",
+            "FLOAT",
+            "DECIMAL",
+            "BLOB",
+            "JSON"
+        ],
+        "operators": [
+            "=",
+            "<>",
+            ">",
+            "<",
+            ">=",
+            "<=",
+            "BETWEEN",
+            "LIKE",
+            "IN",
+            "IS NULL",
+            "AND",
+            "OR",
+            "NOT",
+            "UNION",
+            "EXISTS"
+        ],
+        "common_patterns": [
+            "CRUD Operations",
+            "Aggregation with Group By",
+            "Self Join relationships",
+            "CTE (Common Table Expressions)"
+        ]
+    }
+}
