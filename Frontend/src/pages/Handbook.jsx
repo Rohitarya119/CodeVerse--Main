@@ -19,6 +19,7 @@ import {
   BookOpen,
   Clock,
   ChevronRight,
+  ChevronLeft,
   Copy,
   Check,
   Bookmark,
@@ -474,6 +475,29 @@ export default function HandbookPage() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2e3);
   };
+  const [completedChapters, setCompletedChapters] = useState({});
+
+  const toggleChapterCompletion = (languageId, chapterId) => {
+    setCompletedChapters(prev => {
+      const currentLanguageCompleted = prev[languageId] || [];
+      const newLanguageCompleted = currentLanguageCompleted.includes(chapterId)
+        ? currentLanguageCompleted.filter(id => id !== chapterId)
+        : [...currentLanguageCompleted, chapterId];
+
+      return {
+        ...prev,
+        [languageId]: newLanguageCompleted
+      };
+    });
+  };
+
+  const getProgress = (langId) => {
+    const total = handbooks[langId]?.total_chapters || 0;
+    if (total === 0) return 0;
+    const completed = (completedChapters[langId] || []).length;
+    return Math.round((completed / total) * 100);
+  };
+
   const toggleBookmark = (id) => {
     setBookmarked((prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]);
   };
@@ -483,6 +507,16 @@ export default function HandbookPage() {
         /* Header */
       }
       <div className="mb-8">
+        {activeTab !== "languages" && (
+          <Button
+            variant="ghost"
+            onClick={() => setActiveTab("languages")}
+            className="mb-4 pl-0 hover:bg-transparent hover:text-primary"
+          >
+            <ChevronLeft className="mr-2 h-4 w-4" />
+            Back to All Handbooks
+          </Button>
+        )}
         <div className="flex items-center gap-3 mb-2">
           <div className="rounded-lg bg-primary/10 p-2 transition-transform duration-300 hover:scale-110">
             <Book className="h-6 w-6 text-primary" />
@@ -559,12 +593,12 @@ export default function HandbookPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
                     <span>Progress</span>
-                    <span className="text-primary font-medium">{lang.progress}%</span>
+                    <span className="text-primary font-medium">{getProgress(lang.id)}%</span>
                   </div>
                   <div className="h-2 rounded-full bg-secondary overflow-hidden">
                     <div
                       className={`h-full bg-gradient-to-r ${lang.color} transition-all duration-500 group-hover:shadow-lg`}
-                      style={{ width: `${lang.progress}%` }}
+                      style={{ width: `${getProgress(lang.id)}%` }}
                     />
                   </div>
                 </div>
@@ -593,9 +627,12 @@ export default function HandbookPage() {
                 <div
                   key={idx}
                   onClick={() => setActiveSection(idx)}
-                  className={`p-3 rounded-lg border cursor-pointer transition-all ${activeSection === idx ? "border-primary bg-primary/10 text-primary" : "border-border hover:bg-secondary/50"}`}
+                  className={`p-3 rounded-lg border cursor-pointer transition-all flex justify-between items-center ${activeSection === idx ? "border-primary bg-primary/10 text-primary" : "border-border hover:bg-secondary/50"}`}
                 >
                   <p className="text-sm font-medium line-clamp-2">{section.title}</p>
+                  {(completedChapters[selectedLanguage] || []).includes(idx + 1) && (
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 ml-2" />
+                  )}
                 </div>
               ))}
             </div>
@@ -635,12 +672,26 @@ export default function HandbookPage() {
                     >
                       Previous
                     </Button>
-                    <Button
-                      onClick={() => setActiveSection(prev => Math.min((tutorialContent[selectedLanguage]?.sections?.length || 1) - 1, prev + 1))}
-                    >
-                      Next Chapter
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button
+                        variant={(completedChapters[selectedLanguage] || []).includes(activeSection + 1) ? "default" : "outline"}
+                        className={(completedChapters[selectedLanguage] || []).includes(activeSection + 1) ? "bg-green-600 hover:bg-green-700" : "border-green-600 text-green-600 hover:bg-green-50"}
+                        onClick={() => toggleChapterCompletion(selectedLanguage, activeSection + 1)}
+                      >
+                        {(completedChapters[selectedLanguage] || []).includes(activeSection + 1) ? (
+                          <>
+                            <CheckCircle className="mr-2 h-4 w-4" />
+                            Completed
+                          </>
+                        ) : "Mark as Complete"}
+                      </Button>
+                      <Button
+                        onClick={() => setActiveSection(prev => Math.min((tutorialContent[selectedLanguage]?.sections?.length || 1) - 1, prev + 1))}
+                      >
+                        Next Chapter
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -665,69 +716,76 @@ export default function HandbookPage() {
                 <Badge variant="outline">3/24 Completed</Badge>
               </div>
 
-              {allChapters[selectedLanguage]?.map((chapter, index) => <Card
-                key={chapter.id}
-                onClick={() => {
-                  setActiveSection(index);
-                  setActiveTab("tutorials");
-                  window.scrollTo(0, 0);
-                }}
-                className={`group cursor-pointer border-border bg-card transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:translate-x-1 ${chapter.completed ? "border-green-500/30 bg-green-500/5" : ""} ${chapter.current ? "border-primary ring-2 ring-primary/20" : ""}`}
-              >
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-lg font-bold transition-all duration-300 ${chapter.completed ? "bg-green-500 text-white" : chapter.current ? "bg-primary text-primary-foreground animate-pulse" : "bg-secondary group-hover:bg-primary group-hover:text-primary-foreground"}`}
-                    >
-                      {chapter.completed ? "X" : index + 1}
-                    </div>
+              {allChapters[selectedLanguage]?.map((chapter, index) => {
+                const isCompleted = (completedChapters[selectedLanguage] || []).includes(chapter.id);
+                const isCurrent = (completedChapters[selectedLanguage] || []).length === index;
 
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="font-medium group-hover:text-primary transition-colors">
-                            {chapter.title}
-                          </h3>
-                          {chapter.current && <Badge className="mt-1 bg-primary/20 text-primary">In Progress</Badge>}
+                return (
+                  <Card
+                    key={chapter.id}
+                    onClick={() => {
+                      setActiveSection(index);
+                      setActiveTab("tutorials");
+                      window.scrollTo(0, 0);
+                    }}
+                    className={`group cursor-pointer border-border bg-card transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:translate-x-1 ${isCompleted ? "border-green-500/30 bg-green-500/5" : ""} ${isCurrent ? "border-primary ring-2 ring-primary/20" : ""}`}
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-4">
+                        <div
+                          className={`flex h-10 w-10 items-center justify-center rounded-lg font-bold transition-all duration-300 ${isCompleted ? "bg-green-500 text-white" : isCurrent ? "bg-primary text-primary-foreground animate-pulse" : "bg-secondary group-hover:bg-primary group-hover:text-primary-foreground"}`}
+                        >
+                          {isCompleted ? "\u2713" : index + 1}
                         </div>
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleBookmark(chapter.id);
-                            }}
-                            className="p-1 rounded hover:bg-secondary transition-colors"
-                          >
-                            {bookmarked.includes(chapter.id) ? <BookmarkCheck className="h-4 w-4 text-primary" /> : <Bookmark className="h-4 w-4 text-muted-foreground" />}
-                          </button>
-                          <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h3 className="font-medium group-hover:text-primary transition-colors">
+                                {chapter.title}
+                              </h3>
+                              {isCurrent && <Badge className="mt-1 bg-primary/20 text-primary">In Progress</Badge>}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleBookmark(chapter.id);
+                                }}
+                                className="p-1 rounded hover:bg-secondary transition-colors"
+                              >
+                                {bookmarked.includes(chapter.id) ? <BookmarkCheck className="h-4 w-4 text-primary" /> : <Bookmark className="h-4 w-4 text-muted-foreground" />}
+                              </button>
+                              <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                            </div>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1 mt-2">
+                            {chapter.topics.map((topic) => <Badge key={topic} variant="outline" className="text-xs">
+                              {topic}
+                            </Badge>)}
+                          </div>
+
+                          <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {chapter.duration}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Video className="h-3 w-3" />
+                              {chapter.videoCount} videos
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Code2 className="h-3 w-3" />
+                              {chapter.exerciseCount} exercises
+                            </span>
+                          </div>
                         </div>
                       </div>
-
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {chapter.topics.map((topic) => <Badge key={topic} variant="outline" className="text-xs">
-                          {topic}
-                        </Badge>)}
-                      </div>
-
-                      <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          {chapter.duration}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Video className="h-3 w-3" />
-                          {chapter.videoCount} videos
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Code2 className="h-3 w-3" />
-                          {chapter.exerciseCount} exercises
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>)}
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
 
             {
@@ -740,14 +798,14 @@ export default function HandbookPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center p-4 rounded-lg bg-gradient-to-br from-primary/20 to-cyan-500/20">
-                    <p className="text-4xl font-bold text-primary">12.5%</p>
+                    <p className="text-4xl font-bold text-primary">{getProgress(selectedLanguage)}%</p>
                     <p className="text-sm text-muted-foreground">Overall Completion</p>
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex justify-between text-sm">
                       <span>Chapters Read</span>
-                      <span className="font-medium">3/24</span>
+                      <span className="font-medium">{(completedChapters[selectedLanguage] || []).length}/{handbooks[selectedLanguage]?.total_chapters || 0}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Time Spent</span>
@@ -1214,18 +1272,25 @@ export default function HandbookPage() {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   {[
-                    { name: "Interview Cheat Sheet", icon: FileCode },
-                    { name: "Top 100 Questions PDF", icon: Download },
-                    { name: "Company Prep Guides", icon: BookOpen },
-                    { name: "Behavioral Questions", icon: MessageSquare }
-                  ].map((resource, i) => <Button
-                    key={i}
-                    variant="outline"
-                    className="w-full justify-start gap-2 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-all bg-transparent"
-                  >
-                    <resource.icon className="h-4 w-4" />
-                    {resource.name}
-                  </Button>)}
+                    { name: "Interview Cheat Sheet", icon: FileCode, chapterId: "cheat-sheet" },
+                    { name: "Top 100 Questions PDF", icon: Download, chapterId: "top-100-questions" },
+                    { name: "Company Prep Guides", icon: BookOpen, chapterId: "company-guides" },
+                    { name: "Behavioral Questions", icon: MessageSquare, chapterId: "behavioral-questions" }
+                  ].map((resource, i) => {
+                    // Resource completion is not usually tracked with chapters, so using a default or specific logic
+                    const isCompleted = false;
+                    return (
+                      <Button
+                        key={i}
+                        variant="outline"
+                        className={`w-full justify-start gap-2 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-all bg-transparent ${isCompleted ? "border-green-500/50 text-green-500" : ""}`}
+                      >
+                        <resource.icon className="h-4 w-4" />
+                        {resource.name}
+                        {isCompleted && <Check className="ml-auto h-4 w-4 text-green-500" />}
+                      </Button>
+                    );
+                  })}
                 </CardContent>
               </Card>
             </div>
